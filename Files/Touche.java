@@ -1,7 +1,6 @@
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Shape;
@@ -52,25 +51,29 @@ public class Touche extends Observable {
 			etat = Etat.NORMAL;
 		}
 	}
+
+	private void updateAreaText() {
+		String txt = jTextArea1.getText();
+        switch (str) {
+            case "_":
+                jTextArea1.setText(txt+" ");
+                break;
+            case "\u2190":
+                if (txt.length()>0) {
+					jTextArea1.setText(txt.substring(0, txt.length()-1));
+                }
+                break;
+            default:
+                jTextArea1.setText(txt+str);
+                break;
+        }
+	}
 	
 	public boolean mousePressed(Point p) {
 		if(forme.contains(p)){
 			etat = Etat.PRESSE;
 			sendInfo("[KeyPressed]"+str+";x="+centreX+";y="+centreY);
-            String txt = jTextArea1.getText();
-            switch (str) {
-                case "_":
-                    jTextArea1.setText(txt+" ");
-                    break;
-                case "\u2190":
-                    if (txt.length()>0) {
-                        jTextArea1.setText(txt.substring(0, txt.length()-1));
-                    }
-                    break;
-                default:
-                    jTextArea1.setText(txt+str);
-                    break;
-            }
+			updateAreaText();
             return true;
 		}
         return false;

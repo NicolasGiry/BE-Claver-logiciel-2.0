@@ -26,12 +26,12 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
     private int keyHeight = (keyWidth+10)/2;
     private int nbKeysPredicted = 3;
 
-    //private float[] lignes = {0.5f, 1, 1.5f, 2, 2.5f, 3, 3.5f, 4, 4.5f, 5, 5.5f, 6, 6.5f};
     private float[] lignes = {1.5f, 2, 2.5f, 3, 3.5f, 4, 4.5f, 5, 5.5f, 6, 6.5f, 7f, 7.5f};
     private float[] colonnes = {1, 1.5f, 2, 2.5f, 3, 3.5f, 4};
 
-    private List<String> letters = new ArrayList<>(List.of("", "", "", "E", "A", "I", "S", "N", "R", "T", "O", "L", "U", "D", "C", "M",
-                     "P", "G", "B", "V", "H", "F", "Q", "Y", "X", "J", "'", "W", "?", ".", ",", "\u2190", "!", "_", "Ç", "É", "À", "È", "Ù", "K", "Z"));
+    private List<String> letters = 
+        new ArrayList<>(List.of("", "", "", "E", "A", "I", "S", "N", "R", "T", "O", "L", "U", "D", "C", "M",
+        "P", "G", "B", "V", "H", "F", "Q", "Y", "X", "J", "'", "W", "?", ".", ",", "\u2190", "!", "_", "Ç", "É", "À", "È", "Ù", "K", "Z"));
 
     private int[] x = { (int) (colonnes[2] * keyWidth), (int) (colonnes[3] * keyWidth), (int) (colonnes[4] * keyWidth), (int) (colonnes[4] * keyWidth), 
                         (int) (colonnes[3] * keyWidth), (int) (colonnes[2] * keyWidth), (int) (colonnes[1] * keyWidth), (int) (colonnes[1] * keyWidth), 
@@ -79,7 +79,7 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
     }
     
     public void updateClavier() {
-        letters = arbre.predictNext(true);
+        letters = arbre.predictNext(false);
         
         for (int i=0; i<nbKeysPredicted && i<letters.size(); i++) {
             keys[i].changeLetter(letters.get(i));
@@ -88,7 +88,6 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
 
     public void predict(String letter) {
         if (letter.equals("\u2190")) {
-            System.out.println("SUPPRESSION");
             supp();
             return;
         }
@@ -110,7 +109,6 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
             reset();
         }
     }
-
 
     public void paintComponent(Graphics g) {
 		super.paintComponent(g);

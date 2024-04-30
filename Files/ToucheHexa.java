@@ -1,8 +1,6 @@
 import java.awt.Graphics2D;
 import java.awt.geom.GeneralPath;
 
-import javax.swing.JTextArea;
-
 public class ToucheHexa extends Touche{
 	private static final int RAYON = 25;
 	private GeneralPath gp;

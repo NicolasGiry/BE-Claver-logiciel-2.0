@@ -15,7 +15,6 @@ public class Tree implements Comparable<Tree>{
         this.parent = parent;
     }
 
-    // ajoute la lettre dans les enfants du noeud actuel et retourne le noeud où la lettre a été ajoutée
     public Tree addLettre(String lettre, Tree parent) {
         Tree tree = new Tree(lettre, parent);
         if (enfants.contains(tree)) {
@@ -74,7 +73,6 @@ public class Tree implements Comparable<Tree>{
         List<String> lettres = new ArrayList<>();
         for (Tree t : listeTrie) {
             lettres.add(t.val);
-            // System.out.print(t.val + " ("+t.poids+"), ");
         }
 
         if (display) {
@@ -84,17 +82,6 @@ public class Tree implements Comparable<Tree>{
             }
             System.out.println("");
         }
-        // if (lettres.size() > 0) {
-        //     System.out.print(lettres.get(0));
-        //     if (lettres.size()>1) {
-        //         System.out.print(" > " + lettres.get(1));
-        //         if (lettres.size() > 2) {
-        //             System.out.print(" > " +lettres.get(2));
-        //         }
-        //     }
-        // }
-        // System.out.println("");
-            
         return lettres;
     }
 
@@ -112,7 +99,6 @@ public class Tree implements Comparable<Tree>{
             return tree;
         }
         return null;
-        
     }
 
     @Override
