@@ -6,87 +6,70 @@ public class Predictor {
     private static final String separation = " ";
     private Tree racine = new Tree("", null);
 
-    private static String reformateChar(int c) {
-        // min -> maj
-        if ((c<=122 && c>=97) || c==232 || c==233 || c==224 || c==249 || c == 231) {
-            c -= 32;
-        } 
-        // garder les caractères utiles (ponctuations et majuscules)
-        else if (c==32 || c==39 || c==44 || c==33 || c==63 || c==46 || (c>=65 && c<=90)) {
-            return ""+(char) c;
+    private static String reformateChar(char c) {
+        switch (c) {
+            case 'é': case 'è': case 'à': case 'ù': return String.valueOf(Character.toUpperCase(c));
+            case 'Â': case 'â': case 'ä': case 'Ä': return "A";
+            case 'ê': case 'Ê': case 'ë': case 'Ë': return "E";
+            case 'î': case 'Î': case 'ï': case 'Ï': return "I";
+            case 'ô': case 'Ô': case 'ö': case 'Ö': return "O";
+            case 'û': case 'Û': case 'ü': case 'Ü': return "U";
+            case '-': case '_': case '/': case '\\': case '(': case ')': case '[': case ']': case '«': case '»': case '{': case '}': 
+            case '°': case '"': case ':': case 'º': case '*': case ';': return "";
+            default:
+                if (Character.isDigit(c)) {
+                    return "";
+                }
+                if (Character.isLowerCase(c)) {
+                    return String.valueOf(Character.toUpperCase(c));
+                } else {
+                    return String.valueOf(c);
+                }
         }
-        // changer les accents non pris en charge en maj sans accent
-        else if (c>=242 && c<=246 || c>=210 && c<=214) { 
-            // O
-            c = 79;
-        } else if (c>=218 && c<=220 || c>=250 && c<=252 ) { 
-            // U
-            c = 85;
-        } else if (c>= 193 && c<=198 || c>=225 && c<=230 ) {
-            // A
-            c=65;
-        } else if (c>=202 && c<=203 || c>=234 && c<=235) {
-            // E
-            c = 69;
-        } else if (c>=236 && c<=239 || c>=204 && c<=207) {
-            // I
-            c=73;
-        }
-        // remplacer caractères non pris en charge par un espace
-        else {
-            c=32;
-        }
-
-        return ""+(char) c;
     }
 
 
     private static void createCorpusTXT() {
         try {
-            File livre = new File("Files/Prediction/Corpus_livre.txt");
-            FileReader livreReader = new FileReader(livre);
-            BufferedReader livreBufferedReader = new BufferedReader(livreReader);
-            File scrabble = new File("Files/Prediction/dico.txt");
-            FileReader scrabbleReader = new FileReader(scrabble);
-            BufferedReader scrabbleBufferedReader = new BufferedReader(scrabbleReader);
-            PrintWriter writer = new PrintWriter("Files/Prediction/corpus.txt");
+            BufferedReader reader1 = new BufferedReader(new InputStreamReader(new FileInputStream("Files/Prediction/Corpus_livre.txt"), "UTF-8"));
+            BufferedReader reader2 = new BufferedReader(new InputStreamReader(new FileInputStream("Files/Prediction/dico.txt"), "UTF-8"));
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("Files/Prediction/corpus.txt"), "UTF-8"));
             try {
-                int c;
-                while((c = livreBufferedReader.read()) != -1)
-                {
-                    writer.print(reformateChar(c));
-                }
-                while((c = scrabbleBufferedReader.read()) != -1)
-                {
-                    writer.print(reformateChar(c));
-                }
+                processFile(reader1, writer);
+                processFile(reader2, writer);
             } finally {
-                livreReader.close();
-                livreBufferedReader.close();
-                scrabbleReader.close();
-                scrabbleBufferedReader.close();
+                reader1.close();
+                reader2.close();
                 writer.close();
             }
-        } catch(IOException e)
-        {
-          e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void processFile(BufferedReader reader, BufferedWriter writer) throws IOException {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            for (int i = 0; i < line.length(); i++) {
+                char c = line.charAt(i);
+                writer.write(reformateChar(c));
+            }
+            writer.write(" ");
         }
     }
 
     private List<String> createCorpus() {
         List<String> corpus = new ArrayList<>();
         try {
-            File file = new File("Files/Prediction/corpus.txt");
-            FileReader fileReader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("Files/Prediction/corpus.txt"), "UTF-8"));
             try {
                 int c=0;
                 while((c = bufferedReader.read()) != -1)
                 {
-                    corpus.add(reformateChar(c));
+                    char ch = (char) c;
+                    corpus.add(String.valueOf(ch));
                 }
             } finally {
-                fileReader.close();
                 bufferedReader.close();
             }
         } catch(IOException e)

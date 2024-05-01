@@ -20,7 +20,7 @@ public class Touche extends Observable {
 	Shape forme;
     Font f;
     private JTextArea jTextArea1;
-    boolean isPredictedKey;
+    boolean isPredictedKey, isValiderTouche;
 	
 	public Touche(String str, int cX, int cY){
 		this.str = str;
@@ -73,7 +73,9 @@ public class Touche extends Observable {
 		if(forme.contains(p)){
 			etat = Etat.PRESSE;
 			sendInfo("[KeyPressed]"+str+";x="+centreX+";y="+centreY);
-			updateAreaText();
+			if (!isValiderTouche) {
+				updateAreaText();
+			}
             return true;
 		}
         return false;
@@ -166,8 +168,20 @@ public class Touche extends Observable {
         this.jTextArea1 = jTextArea1;
     }
 
-    public void isPredictedKey() {
-        isPredictedKey = true;
+    public void setIsPredictedKey(boolean b) {
+        isPredictedKey = b;
+    }
+
+	public void setIsValiderTouche(boolean b) {
+        isValiderTouche = b;
+    }
+
+	public boolean isValiderTouche() {
+        return isValiderTouche;
+    }
+
+	public boolean isPredictedKey() {
+        return isPredictedKey;
     }
 
     public String getStr() {
