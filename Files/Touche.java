@@ -9,6 +9,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.Observable;
 
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 public class Touche extends Observable {
     private static final int LONGUEUR = 60;
@@ -19,7 +20,7 @@ public class Touche extends Observable {
 	Etat etat;
 	Shape forme;
     Font f;
-    private JTextArea jTextArea1;
+    private JTextPane jTextPane;
     boolean isPredictedKey, isValiderTouche;
 	
 	public Touche(String str, int cX, int cY){
@@ -52,30 +53,12 @@ public class Touche extends Observable {
 		}
 	}
 
-	private void updateAreaText() {
-		String txt = jTextArea1.getText();
-        switch (str) {
-            case "_":
-                jTextArea1.setText(txt+" ");
-                break;
-            case "\u2190":
-                if (txt.length()>0) {
-					jTextArea1.setText(txt.substring(0, txt.length()-1));
-                }
-                break;
-            default:
-                jTextArea1.setText(txt+str);
-                break;
-        }
-	}
+	
 	
 	public boolean mousePressed(Point p) {
 		if(forme.contains(p)){
 			etat = Etat.PRESSE;
 			sendInfo("[KeyPressed]"+str+";x="+centreX+";y="+centreY);
-			if (!isValiderTouche) {
-				updateAreaText();
-			}
             return true;
 		}
         return false;
@@ -164,8 +147,8 @@ public class Touche extends Observable {
         str = newLetter;
     }
 
-    public void setTextArea(JTextArea jTextArea1) {
-        this.jTextArea1 = jTextArea1;
+	public void setTextPane(JTextPane jTextPane) {
+        this.jTextPane = jTextPane;
     }
 
     public void setIsPredictedKey(boolean b) {
@@ -185,6 +168,13 @@ public class Touche extends Observable {
     }
 
     public String getStr() {
-        return str;
+        switch (str) {
+            case "_":
+                return " ";
+            case "\u2190":
+				return "supp";
+            default:
+                return str;
+        }
     }
 }

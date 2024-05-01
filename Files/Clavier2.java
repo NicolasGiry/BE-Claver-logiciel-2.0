@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -16,6 +17,12 @@ import java.util.Random;
 
 import javax.swing.JComponent;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 public class Clavier2 extends JComponent implements Observer, MouseListener, MouseMotionListener {
     private static final int NB_KEYS = 41;
@@ -26,15 +33,20 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
     private Predictor predicteur = new Predictor();
     private Tree arbre;
 	private List<String> phrases;
-    private JTextArea phraseArea, textArea;
+    private JTextArea phraseArea;
+    private JTextPane textPane;
     private long timer = 600000, depart;
     //                   10 min
+    private int currentChar=0;
+
     private ToucheHexa[] keys;
     private Touche validerTouche;
     private int keyWidth = 85;
     private int keyHeight = (keyWidth+10)/2;
     private int nbKeysPredicted = 3;
-    private int nbKeyPressed = 0, nbPredictedKeysPressed = 0;
+    private int nbChar = 0, nbPredictedKeysPressed = 0, nbErrors = 0;
+
+    SimpleAttributeSet basic, error;
 
     private float[] lignes = {1.5f, 2, 2.5f, 3, 3.5f, 4, 4.5f, 5, 5.5f, 6, 6.5f, 7f, 7.5f};
     private float[] colonnes = {1, 1.5f, 2, 2.5f, 3, 3.5f, 4};
@@ -67,11 +79,11 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
                         (int) (lignes[3] * keyHeight), (int) (lignes[0] * keyHeight), (int) (lignes[0] * keyHeight), (int) (lignes[0] * keyHeight),
                         (int) (lignes[12] * keyHeight), (int) (lignes[12] * keyHeight)};
 
-    public Clavier2(JTextArea jTextArea1, JTextArea textModelArea) {
+    public Clavier2(JTextPane jTextpane, JTextArea textModelArea) {
         super();
         depart = System.currentTimeMillis();
         this.phraseArea = textModelArea;
-        textArea = jTextArea1;
+        textPane = jTextpane;
         predicteur.createTree();
         arbre = predicteur.getRacine();
         keys = new ToucheHexa[NB_KEYS];
@@ -81,9 +93,14 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
         validerTouche.setIsValiderTouche(true);
         validerTouche.addObserver(this);
 
+        basic = new SimpleAttributeSet();
+        error = new SimpleAttributeSet();
+        StyleConstants.setForeground(basic, Color.black);
+        StyleConstants.setForeground(error, Color.red);
+
         for (int i=0; i<NB_KEYS; i++) {
             keys[i] = new ToucheHexa(letters.get(i), x[i], y[i]);
-            keys[i].setTextArea(textArea);
+            keys[i].setTextPane(textPane);
             keys[i].addObserver(this);
             if (i<nbKeysPredicted) {
                 keys[i].setIsPredictedKey(true);
@@ -131,19 +148,13 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
     public void valider() {
         long timeElapsed = System.currentTimeMillis()-depart;
         if (timeElapsed>=timer) {
-            //super.setVisible(false); //you can't see me!
-            //super.dispose(); //Destroy the JFrame object
+            System.out.println("FIN");
         }
+        currentChar = 0;
         long tempsRestant = (timer-timeElapsed);
         System.out.println("Temps restants : "+ tempsRestant / (60000) + " min " + (tempsRestant % (60000)) / 1000 + " sec " + tempsRestant % 1000 + " ms");
-        String texteRecopie = textArea.getText();
-        if (phraseArea.getText().equals(texteRecopie)) {
-            System.out.println("Correct !");
-        } else {
-            System.out.println("Incorrect !");
-        }
         phraseArea.setText(texteSuivant());
-        textArea.setText("");
+        textPane.setText("");
         reset();
     }
     
@@ -156,7 +167,7 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
     }
 
     public void predict(String letter) {
-        if (letter.equals("\u2190")) {
+        if (letter.equals("supp")) {
             supp();
             return;
         }
@@ -171,7 +182,10 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
     }
 
     public void supp() {
-        nbKeyPressed --;
+        nbChar--; 
+        if (nbChar<0) {
+            nbChar = 0;
+        }
         Tree parent = arbre.getparent();
         if (parent != null) {
             arbre = parent;
@@ -179,6 +193,39 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
             reset();
         }
     }
+
+    private void updateInputText(String str, boolean isError) throws BadLocationException {
+		String txt = textPane.getText();
+        switch (str) {
+            case "_":
+                textPane.setText(txt+" ");
+                break;
+            case "supp":
+                if (txt.length()>0) {
+					//textPane.setText(txt.substring(0, txt.length()-1));
+                    StyledDocument doc = textPane.getStyledDocument();
+                    int length = doc.getLength();
+                    if (length > 0) {
+                        try {
+                            doc.remove(length - 1, 1);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                break;
+            default:
+                SimpleAttributeSet set;
+                if (isError) {
+                    set = error;
+                } else {
+                    set = basic;
+                }
+                Document doc = textPane.getStyledDocument();
+                doc.insertString(doc.getLength(), str, set);
+                break;
+        }
+	}
 
     public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -226,12 +273,37 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
         for (ToucheHexa k : keys) {
             if (k.mousePressed(e.getPoint())) {
                 predict(k.getStr());
-                nbKeyPressed ++;
-                System.out.println("nombre touches appuyées : "+nbKeyPressed);
+                boolean isError = false;
+                nbChar++;
+                System.out.println("nombre touches appuyées : "+nbChar);
                 if (k.isPredictedKey()) {
                     nbPredictedKeysPressed++;
                     System.out.println("Vous avez appuyé sur " + nbPredictedKeysPressed +" touches prédites.");
                 }
+                if (!(""+phraseArea.getText().charAt(currentChar)).equals(k.getStr()) && !k.getStr().equals("supp")) {
+                    isError = true;
+                    nbErrors++;
+                    System.out.println("Vous avez fait " + nbErrors +" erreurs.");
+                    System.out.println("Voulu : " + phraseArea.getText().charAt(currentChar) + " / écrit : " + k.getStr());
+                    currentChar++;
+                } else if (k.getStr().equals("supp")) {
+                    currentChar--;
+                    if (currentChar<0) {
+                        currentChar = 0;
+                    }
+                } else {
+                    currentChar ++;
+                }
+                if (currentChar>=phraseArea.getText().length()-1) {
+                    currentChar = phraseArea.getText().length()-1;
+                }
+
+                try {
+                    updateInputText(k.getStr(), isError);
+                } catch (BadLocationException err) {
+                    err.printStackTrace();
+                }
+                
             }
         }
 
