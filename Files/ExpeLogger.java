@@ -1,0 +1,192 @@
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.Calendar;
+
+public class ExpeLogger{
+	private static ExpeLogger logger = new ExpeLogger();
+	
+	BufferedWriter txtFile;
+	
+	private ExpeLogger(){}
+	
+	public static void debutSimulation(ResultsWordPrediction wp, int participant, Mode mode){
+		long time = System.currentTimeMillis();
+		Calendar c=Calendar.getInstance();
+		c.setTimeInMillis(time);
+		int year = c.get(Calendar.YEAR);
+		int month = c.get(Calendar.MONTH)+1;
+		int day = c.get(Calendar.DAY_OF_MONTH);
+		int hour = c.get(Calendar.HOUR_OF_DAY);
+		int minute = c.get(Calendar.MINUTE);
+		int second = c.get(Calendar.SECOND);
+		
+		System.out.println(day+"/"+month+"/"+year+" - "+hour+":"+minute+":"+second);
+		
+		try {
+			StringBuffer fileName = new StringBuffer("logs/");
+			fileName.append(year);
+			fileName.append("_");
+			fileName.append(month);
+			fileName.append("_");
+			fileName.append(day);
+			fileName.append("_");
+			fileName.append(hour);
+			fileName.append("_");
+			fileName.append(minute);
+			fileName.append("_");
+			fileName.append(second);
+			fileName.append("_");
+			fileName.append(mode.name());
+			fileName.append("_P");
+			fileName.append(participant);
+			fileName.append("_");
+			fileName.append(wp.name());
+			
+			logger.txtFile = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName.toString()),StandardCharsets.UTF_8));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		try {
+			logger.txtFile.write("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+			logger.txtFile.newLine();
+			logger.txtFile.write("<ExpeKeyboard xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"expekeyboard.xsd\">");
+			logger.txtFile.newLine();
+			logger.txtFile.write("\t<Settings t=\"");
+			logger.txtFile.write(String.valueOf(time));
+			logger.txtFile.write("\">");
+			logger.txtFile.newLine();
+			logger.txtFile.write("\t\t<Keyboard name=\""+wp.name()+"\"/>");
+			logger.txtFile.newLine();
+			logger.txtFile.write("\t\t<Mode type=\""+mode.name()+"\"/>");
+			logger.txtFile.newLine();
+			logger.txtFile.write("\t\t<Participant id=\""+participant+"\"/>");
+			logger.txtFile.newLine();
+			logger.txtFile.write("\t</Settings>");
+			logger.txtFile.newLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void finSimulation(){
+		try {
+			logger.txtFile.write("</ExpeKeyboard>");
+			logger.txtFile.newLine();
+			logger.txtFile.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void debutDePhrase(String phrase){
+		try {
+			long time = System.currentTimeMillis();
+			logger.txtFile.write("\t<Phrase string=\"");
+			logger.txtFile.write(phrase);
+			logger.txtFile.write("\" t=\"");
+			logger.txtFile.write(String.valueOf(time));
+			logger.txtFile.write("\">");
+			logger.txtFile.newLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void finDePhrase() {
+		try {
+			logger.txtFile.write("\t</Phrase>");
+			logger.txtFile.newLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void selectionMot(String name, int x, int y) {
+		try {
+			long time = System.currentTimeMillis();
+			logger.txtFile.write("\t\t<SelectionMot name=\"");
+			logger.txtFile.write(name);
+			logger.txtFile.write("\" x=\"");
+			logger.txtFile.write(String.valueOf(x));
+			logger.txtFile.write("\" y=\"");
+			logger.txtFile.write(String.valueOf(y));
+			logger.txtFile.write("\" t=\"");
+			logger.txtFile.write(String.valueOf(time));
+			logger.txtFile.write("\"/>");
+			logger.txtFile.newLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void selectionCaractere(String car, int x, int y) {
+		try {
+			long time = System.currentTimeMillis();
+			logger.txtFile.write("\t\t<SelectionCaractere name=\"");
+			logger.txtFile.write(car);
+			logger.txtFile.write("\" x=\"");
+			logger.txtFile.write(String.valueOf(x));
+			logger.txtFile.write("\" y=\"");
+			logger.txtFile.write(String.valueOf(y));
+			logger.txtFile.write("\" t=\"");
+			logger.txtFile.write(String.valueOf(time));
+			logger.txtFile.write("\"/>");
+			logger.txtFile.newLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void selectionCaracterePredit(String car, int x, int y) {
+		try {
+			long time = System.currentTimeMillis();
+			logger.txtFile.write("\t\t<SelectionCaracterePredit name=\"");
+			logger.txtFile.write(car);
+			logger.txtFile.write("\" x=\"");
+			logger.txtFile.write(String.valueOf(x));
+			logger.txtFile.write("\" y=\"");
+			logger.txtFile.write(String.valueOf(y));
+			logger.txtFile.write("\" t=\"");
+			logger.txtFile.write(String.valueOf(time));
+			logger.txtFile.write("\"/>");
+			logger.txtFile.newLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void debutPrediction(){
+		try {
+			long time = System.currentTimeMillis();
+			logger.txtFile.write("\t\t<Prediction t=\"");
+			logger.txtFile.write(String.valueOf(time));
+			logger.txtFile.write("\">");
+			logger.txtFile.newLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void resultatPrediction(String word, int position) {
+		try {
+			logger.txtFile.write("\t\t\t<ResultatPrediction word=\"");
+			logger.txtFile.write(word);
+			logger.txtFile.write("\" position=\"");
+			logger.txtFile.write(String.valueOf(position));
+			logger.txtFile.write("\"/>");
+			logger.txtFile.newLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void finPrediction(){
+		try {
+			logger.txtFile.write("\t\t</Prediction>");
+			logger.txtFile.newLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

@@ -31,9 +31,9 @@ public class Predictor {
 
     private static void createCorpusTXT() {
         try {
-            BufferedReader reader1 = new BufferedReader(new InputStreamReader(new FileInputStream("Files/Prediction/Corpus_livre.txt"), "UTF-8"));
-            BufferedReader reader2 = new BufferedReader(new InputStreamReader(new FileInputStream("Files/Prediction/dico.txt"), "UTF-8"));
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("Files/Prediction/corpus.txt"), "UTF-8"));
+            BufferedReader reader1 = new BufferedReader(new InputStreamReader(new FileInputStream("Prediction/Corpus_livre.txt"), "UTF-8"));
+            BufferedReader reader2 = new BufferedReader(new InputStreamReader(new FileInputStream("Prediction/dico.txt"), "UTF-8"));
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("Prediction/corpus.txt"), "UTF-8"));
             try {
                 processFile(reader1, writer);
                 processFile(reader2, writer);
@@ -61,7 +61,7 @@ public class Predictor {
     private List<String> createCorpus() {
         List<String> corpus = new ArrayList<>();
         try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("Files/Prediction/corpus.txt"), "UTF-8"));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("Prediction/corpus.txt"), "UTF-8"));
             try {
                 int c=0;
                 while((c = bufferedReader.read()) != -1)

@@ -35,7 +35,7 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
 	private List<String> phrases;
     private JTextArea phraseArea;
     private JTextPane textPane;
-    private long timer = 600000, depart;
+    private long timer = 60000, depart;
     //                   10 min
     private int currentChar=0;
 
@@ -109,6 +109,7 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
 
         phrases = generatePhrases();
 		phraseArea.setText(texteSuivant());
+        ExpeLogger.debutDePhrase(phraseArea.getText());
 
         updateClavier();
 		addMouseListener(this);
@@ -117,7 +118,7 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
 
     private List<String> generatePhrases() {
 		List<String> phrases = new ArrayList<>();
-		String chemin = "Files/phrases_test.txt";
+		String chemin = "phrases_test.txt";
 		try {
             BufferedReader phrasesBufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(chemin), "UTF-8"));
             try {
@@ -147,13 +148,17 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
 
     public void valider() {
         long timeElapsed = System.currentTimeMillis()-depart;
+        ExpeLogger.finDePhrase();
         if (timeElapsed>=timer) {
             System.out.println("FIN");
+            ExpeLogger.finSimulation();
+            System.exit(0);
         }
         currentChar = 0;
         long tempsRestant = (timer-timeElapsed);
         System.out.println("Temps restants : "+ tempsRestant / (60000) + " min " + (tempsRestant % (60000)) / 1000 + " sec " + tempsRestant % 1000 + " ms");
         phraseArea.setText(texteSuivant());
+        ExpeLogger.debutDePhrase(phraseArea.getText());
         textPane.setText("");
         reset();
     }
@@ -279,6 +284,9 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
                 if (k.isPredictedKey()) {
                     nbPredictedKeysPressed++;
                     System.out.println("Vous avez appuyé sur " + nbPredictedKeysPressed +" touches prédites.");
+                    ExpeLogger.selectionCaracterePredit(k.getStr(), k.centreX, k.centreY);
+                } else {
+                    ExpeLogger.selectionCaractere(k.getStr(), k.centreX, k.centreY);
                 }
                 if (!(""+phraseArea.getText().charAt(currentChar)).equals(k.getStr()) && !k.getStr().equals("supp")) {
                     isError = true;
