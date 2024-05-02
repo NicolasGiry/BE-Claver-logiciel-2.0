@@ -5,6 +5,9 @@ import java.io.*;
 public class Predictor {
     private static final String separation = " ";
     private Tree racine = new Tree("", null);
+    private static String cheminLivre = "Prediction/Corpus_livre.txt";
+    private static String cheminDico = "Prediction/dico.txt";
+    private static String cheminCorpus = "Prediction/corpus.txt";
 
     private static String reformateChar(char c) {
         switch (c) {
@@ -30,10 +33,15 @@ public class Predictor {
 
 
     private static void createCorpusTXT() {
+        if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+            cheminLivre = "Files/" + cheminLivre;
+            cheminDico = "Files/" + cheminDico;
+            cheminCorpus = "Files/" + cheminCorpus;
+        }
         try {
-            BufferedReader reader1 = new BufferedReader(new InputStreamReader(new FileInputStream("Prediction/Corpus_livre.txt"), "UTF-8"));
-            BufferedReader reader2 = new BufferedReader(new InputStreamReader(new FileInputStream("Prediction/dico.txt"), "UTF-8"));
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("Prediction/corpus.txt"), "UTF-8"));
+            BufferedReader reader1 = new BufferedReader(new InputStreamReader(new FileInputStream(cheminLivre), "UTF-8"));
+            BufferedReader reader2 = new BufferedReader(new InputStreamReader(new FileInputStream(cheminDico), "UTF-8"));
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(cheminCorpus), "UTF-8"));
             try {
                 processFile(reader1, writer);
                 processFile(reader2, writer);
@@ -59,9 +67,14 @@ public class Predictor {
     }
 
     private List<String> createCorpus() {
+        if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+            cheminLivre = "Files/" + cheminLivre;
+            cheminDico = "Files/" + cheminDico;
+            cheminCorpus = "Files/" + cheminCorpus;
+        }
         List<String> corpus = new ArrayList<>();
         try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("Prediction/corpus.txt"), "UTF-8"));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(cheminCorpus), "UTF-8"));
             try {
                 int c=0;
                 while((c = bufferedReader.read()) != -1)
@@ -98,6 +111,12 @@ public class Predictor {
     }
 
     public static void main(String[] args) {
+        String osName = System.getProperty("os.name").toLowerCase();
+        if (osName.contains("windows")) {
+            cheminLivre = "Files/" + cheminLivre;
+            cheminDico = "Files/" + cheminDico;
+            cheminCorpus = "Files/" + cheminCorpus;
+        }
         Predictor predictor = new Predictor();
         createCorpusTXT();
         predictor.createTree();

@@ -119,6 +119,9 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
     private List<String> generatePhrases() {
 		List<String> phrases = new ArrayList<>();
 		String chemin = "phrases_test.txt";
+        if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+            chemin = "Files/" + chemin;
+        }
 		try {
             BufferedReader phrasesBufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(chemin), "UTF-8"));
             try {
@@ -165,10 +168,12 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
     
     public void updateClavier() {
         letters = arbre.predictNext(false);
-        
+        ExpeLogger.debutPrediction();
         for (int i=0; i<nbKeysPredicted && i<letters.size(); i++) {
             keys[i].changeLetter(letters.get(i));
+            ExpeLogger.resultatPrediction(letters.get(i), i);
         }
+        ExpeLogger.finPrediction();
     }
 
     public void predict(String letter) {
@@ -187,10 +192,10 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
     }
 
     public void supp() {
-        nbChar--; 
-        if (nbChar<0) {
-            nbChar = 0;
-        }
+        //nbChar--; 
+        //if (nbChar<0) {
+        //    nbChar = 0;
+        //}
         Tree parent = arbre.getparent();
         if (parent != null) {
             arbre = parent;
@@ -231,6 +236,32 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
                 break;
         }
 	}
+
+    private int increment(int v, int v_max) {
+        v++;
+        if (v>=v_max) {
+            v = v_max;
+        }
+        return v;
+    }
+
+    private boolean isCorrect(String str) {
+        if (!(""+phraseArea.getText().charAt(currentChar)).equals(str) && !str.equals("supp")) {
+            nbErrors++;
+            // System.out.println("Vous avez fait " + nbErrors +" erreurs.");
+            // System.out.println("Voulu : " + phraseArea.getText().charAt(currentChar) + " / écrit : " + str);
+            currentChar = increment(currentChar, phraseArea.getText().length()-1);
+            return false;
+        } else if (str.equals("supp")) {
+            currentChar--;
+            if (currentChar<0) {
+                currentChar = 0;
+            }
+        } else {
+            currentChar = increment(currentChar, phraseArea.getText().length()-1);
+        }
+        return true;
+    }
 
     public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -278,40 +309,15 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
         for (ToucheHexa k : keys) {
             if (k.mousePressed(e.getPoint())) {
                 predict(k.getStr());
-                boolean isError = false;
-                nbChar++;
-                System.out.println("nombre touches appuyées : "+nbChar);
-                if (k.isPredictedKey()) {
-                    nbPredictedKeysPressed++;
-                    System.out.println("Vous avez appuyé sur " + nbPredictedKeysPressed +" touches prédites.");
-                    ExpeLogger.selectionCaracterePredit(k.getStr(), k.centreX, k.centreY);
-                } else {
-                    ExpeLogger.selectionCaractere(k.getStr(), k.centreX, k.centreY);
-                }
-                if (!(""+phraseArea.getText().charAt(currentChar)).equals(k.getStr()) && !k.getStr().equals("supp")) {
-                    isError = true;
-                    nbErrors++;
-                    System.out.println("Vous avez fait " + nbErrors +" erreurs.");
-                    System.out.println("Voulu : " + phraseArea.getText().charAt(currentChar) + " / écrit : " + k.getStr());
-                    currentChar++;
-                } else if (k.getStr().equals("supp")) {
-                    currentChar--;
-                    if (currentChar<0) {
-                        currentChar = 0;
-                    }
-                } else {
-                    currentChar ++;
-                }
-                if (currentChar>=phraseArea.getText().length()-1) {
-                    currentChar = phraseArea.getText().length()-1;
-                }
-
+                //nbChar++;
+                boolean isPredicted = k.isPredictedKey();
+                boolean isError = !isCorrect(k.getStr());
+                ExpeLogger.selectionCaractere(k.getStr(), k.centreX, k.centreY, !isError, isPredicted);
                 try {
                     updateInputText(k.getStr(), isError);
                 } catch (BadLocationException err) {
                     err.printStackTrace();
                 }
-                
             }
         }
 

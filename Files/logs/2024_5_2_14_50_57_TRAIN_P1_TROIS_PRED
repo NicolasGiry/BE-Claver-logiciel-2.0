@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExpeKeyboard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="expekeyboard.xsd">
+	<Settings t="1714654257264">
+		<Keyboard name="TROIS_PRED"/>
+		<Mode type="TRAIN"/>
+		<Participant id="1"/>
+	</Settings>
+	<Phrase string="L'OPTIMISME EST UN CHOIX." t="1714654258679">
+		<Prediction t="1714654258679">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="L" x="297" y="164" isCorrect="true" isPredicted="false" t="1714654262573"/>
+		<Prediction t="1714654262577">
+			<ResultatPrediction letter="E" position="0"/>
+			<ResultatPrediction letter="A" position="1"/>
+			<ResultatPrediction letter="'" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="'" x="255" y="188" isCorrect="true" isPredicted="true" t="1714654263017"/>
+		<Prediction t="1714654263017">
+			<ResultatPrediction letter="A" position="0"/>
+			<ResultatPrediction letter="E" position="1"/>
+			<ResultatPrediction letter="I" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="O" x="255" y="141" isCorrect="true" isPredicted="false" t="1714654263447"/>
+		<Prediction t="1714654263447">
+			<ResultatPrediction letter="R" position="0"/>
+			<ResultatPrediction letter="N" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="P" x="255" y="188" isCorrect="true" isPredicted="true" t="1714654264082"/>
+		<Prediction t="1714654264082">
+			<ResultatPrediction letter="É" position="0"/>
+			<ResultatPrediction letter="T" position="1"/>
+			<ResultatPrediction letter="U" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="T" x="212" y="164" isCorrect="true" isPredicted="true" t="1714654264592"/>
+		<Prediction t="1714654264592">
+			<ResultatPrediction letter="I" position="0"/>
+		</Prediction>
+		<SelectionCaractere name="I" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654265154"/>
+		<Prediction t="1714654265154">
+			<ResultatPrediction letter="Q" position="0"/>
+			<ResultatPrediction letter="M" position="1"/>
+			<ResultatPrediction letter="C" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="M" x="212" y="164" isCorrect="true" isPredicted="true" t="1714654265720"/>
+		<Prediction t="1714654265720">
+			<ResultatPrediction letter="I" position="0"/>
+		</Prediction>
+		<Prediction t="1714654266160">
+			<ResultatPrediction letter="I" position="0"/>
+		</Prediction>
+		<SelectionCaractere name="I" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654266461"/>
+		<Prediction t="1714654266462">
+			<ResultatPrediction letter="S" position="0"/>
+		</Prediction>
+		<SelectionCaractere name="S" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654266903"/>
+		<Prediction t="1714654266903">
+			<ResultatPrediction letter="M" position="0"/>
+		</Prediction>
+		<SelectionCaractere name="M" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654267823"/>
+		<Prediction t="1714654267823">
+			<ResultatPrediction letter="E" position="0"/>
+		</Prediction>
+		<SelectionCaractere name="E" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654268535"/>
+		<Prediction t="1714654268535">
+			<ResultatPrediction letter="," position="0"/>
+		</Prediction>
+		<SelectionCaractere name=" " x="212" y="211" isCorrect="true" isPredicted="false" t="1714654269104"/>
+		<Prediction t="1714654269105">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="E" x="255" y="235" isCorrect="true" isPredicted="false" t="1714654269620"/>
+		<Prediction t="1714654269620">
+			<ResultatPrediction letter="N" position="0"/>
+			<ResultatPrediction letter="́" position="1"/>
+			<ResultatPrediction letter="T" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="S" x="127" y="211" isCorrect="true" isPredicted="false" t="1714654270076"/>
+		<Prediction t="1714654270077">
+			<ResultatPrediction letter="T" position="0"/>
+			<ResultatPrediction letter="S" position="1"/>
+			<ResultatPrediction letter="C" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="T" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654270443"/>
+		<Prediction t="1714654270443">
+			<ResultatPrediction letter="O" position="0"/>
+			<ResultatPrediction letter="I" position="1"/>
+			<ResultatPrediction letter="C" position="2"/>
+		</Prediction>
+		<SelectionCaractere name=" " x="212" y="211" isCorrect="true" isPredicted="false" t="1714654270820"/>
+		<Prediction t="1714654270821">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="U" x="297" y="211" isCorrect="true" isPredicted="false" t="1714654271455"/>
+		<Prediction t="1714654271456">
+			<ResultatPrediction letter="N" position="0"/>
+			<ResultatPrediction letter="R" position="1"/>
+			<ResultatPrediction letter="S" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="N" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654272081"/>
+		<Prediction t="1714654272081">
+			<ResultatPrediction letter="E" position="0"/>
+			<ResultatPrediction letter="I" position="1"/>
+			<ResultatPrediction letter="D" position="2"/>
+		</Prediction>
+		<SelectionCaractere name=" " x="212" y="211" isCorrect="true" isPredicted="false" t="1714654272457"/>
+		<Prediction t="1714654272457">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="C" x="212" y="164" isCorrect="true" isPredicted="true" t="1714654273807"/>
+		<Prediction t="1714654273807">
+			<ResultatPrediction letter="O" position="0"/>
+			<ResultatPrediction letter="E" position="1"/>
+			<ResultatPrediction letter="H" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="H" x="255" y="188" isCorrect="true" isPredicted="true" t="1714654274308"/>
+		<Prediction t="1714654274308">
+			<ResultatPrediction letter="A" position="0"/>
+			<ResultatPrediction letter="E" position="1"/>
+			<ResultatPrediction letter="O" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="O" x="255" y="188" isCorrect="true" isPredicted="true" t="1714654275005"/>
+		<Prediction t="1714654275005">
+			<ResultatPrediction letter="S" position="0"/>
+			<ResultatPrediction letter="I" position="1"/>
+			<ResultatPrediction letter="U" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="I" x="212" y="164" isCorrect="true" isPredicted="true" t="1714654275486"/>
+		<Prediction t="1714654275486">
+			<ResultatPrediction letter="S" position="0"/>
+			<ResultatPrediction letter="X" position="1"/>
+			<ResultatPrediction letter="E" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="X" x="212" y="164" isCorrect="true" isPredicted="true" t="1714654276099"/>
+		<Prediction t="1714654276099">
+			<ResultatPrediction letter="," position="0"/>
+			<ResultatPrediction letter="." position="1"/>
+			<ResultatPrediction letter="?" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="." x="212" y="164" isCorrect="true" isPredicted="true" t="1714654276937"/>
+		<Prediction t="1714654276937">
+		</Prediction>
+	</Phrase>
+	<Phrase string="L'AMOUR DE SOI EST ESSENTIEL POUR S'ÉPANOUIR." t="1714654277532">
+		<Prediction t="1714654277532">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="L" x="297" y="164" isCorrect="true" isPredicted="false" t="1714654279119"/>
+		<Prediction t="1714654279120">
+			<ResultatPrediction letter="E" position="0"/>
+			<ResultatPrediction letter="A" position="1"/>
+			<ResultatPrediction letter="'" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="'" x="255" y="188" isCorrect="true" isPredicted="true" t="1714654279532"/>
+		<Prediction t="1714654279533">
+			<ResultatPrediction letter="A" position="0"/>
+			<ResultatPrediction letter="E" position="1"/>
+			<ResultatPrediction letter="I" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="A" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654280123"/>
+		<Prediction t="1714654280124">
+			<ResultatPrediction letter="M" position="0"/>
+			<ResultatPrediction letter="I" position="1"/>
+			<ResultatPrediction letter="R" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="M" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654280682"/>
+		<Prediction t="1714654280682">
+			<ResultatPrediction letter="O" position="0"/>
+			<ResultatPrediction letter="E" position="1"/>
+			<ResultatPrediction letter="I" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="O" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654281041"/>
+		<Prediction t="1714654281042">
+			<ResultatPrediction letter="U" position="0"/>
+		</Prediction>
+		<SelectionCaractere name="U" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654281354"/>
+		<Prediction t="1714654281355">
+			<ResultatPrediction letter="R" position="0"/>
+		</Prediction>
+		<SelectionCaractere name="R" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654281671"/>
+		<Prediction t="1714654281671">
+			<ResultatPrediction letter="," position="0"/>
+			<ResultatPrediction letter="." position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name=" " x="212" y="211" isCorrect="true" isPredicted="false" t="1714654282135"/>
+		<Prediction t="1714654282135">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="D" x="297" y="258" isCorrect="true" isPredicted="false" t="1714654282893"/>
+		<Prediction t="1714654282893">
+			<ResultatPrediction letter="E" position="0"/>
+			<ResultatPrediction letter="I" position="1"/>
+			<ResultatPrediction letter="'" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="E" x="255" y="235" isCorrect="true" isPredicted="false" t="1714654283155"/>
+		<Prediction t="1714654283155">
+			<ResultatPrediction letter="́" position="0"/>
+			<ResultatPrediction letter="S" position="1"/>
+			<ResultatPrediction letter="V" position="2"/>
+		</Prediction>
+		<SelectionCaractere name=" " x="212" y="211" isCorrect="true" isPredicted="false" t="1714654283507"/>
+		<Prediction t="1714654283507">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="S" x="127" y="211" isCorrect="true" isPredicted="false" t="1714654286166"/>
+		<Prediction t="1714654286167">
+			<ResultatPrediction letter="O" position="0"/>
+			<ResultatPrediction letter="E" position="1"/>
+			<ResultatPrediction letter="U" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="O" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654286688"/>
+		<Prediction t="1714654286689">
+			<ResultatPrediction letter="U" position="0"/>
+			<ResultatPrediction letter="N" position="1"/>
+			<ResultatPrediction letter="I" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="I" x="255" y="188" isCorrect="true" isPredicted="true" t="1714654287331"/>
+		<Prediction t="1714654287332">
+			<ResultatPrediction letter="R" position="0"/>
+			<ResultatPrediction letter="T" position="1"/>
+			<ResultatPrediction letter="G" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="T" x="212" y="164" isCorrect="false" isPredicted="true" t="1714654287964"/>
+		<Prediction t="1714654287965">
+			<ResultatPrediction letter="," position="0"/>
+			<ResultatPrediction letter="!" position="1"/>
+			<ResultatPrediction letter="I" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="supp" x="340" y="188" isCorrect="true" isPredicted="false" t="1714654289318"/>
+		<Prediction t="1714654289318">
+			<ResultatPrediction letter="R" position="0"/>
+			<ResultatPrediction letter="T" position="1"/>
+			<ResultatPrediction letter="G" position="2"/>
+		</Prediction>
+		<SelectionCaractere name=" " x="212" y="211" isCorrect="true" isPredicted="false" t="1714654289819"/>
+		<Prediction t="1714654289819">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="E" x="255" y="235" isCorrect="true" isPredicted="false" t="1714654290968"/>
+		<Prediction t="1714654290968">
+			<ResultatPrediction letter="N" position="0"/>
+			<ResultatPrediction letter="́" position="1"/>
+			<ResultatPrediction letter="T" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="S" x="127" y="211" isCorrect="true" isPredicted="false" t="1714654291383"/>
+		<Prediction t="1714654291383">
+			<ResultatPrediction letter="T" position="0"/>
+			<ResultatPrediction letter="S" position="1"/>
+			<ResultatPrediction letter="C" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="T" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654291680"/>
+		<Prediction t="1714654291680">
+			<ResultatPrediction letter="O" position="0"/>
+			<ResultatPrediction letter="I" position="1"/>
+			<ResultatPrediction letter="C" position="2"/>
+		</Prediction>
+		<SelectionCaractere name=" " x="212" y="211" isCorrect="true" isPredicted="false" t="1714654292043"/>
+		<Prediction t="1714654292043">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="E" x="255" y="235" isCorrect="true" isPredicted="false" t="1714654292878"/>
+		<Prediction t="1714654292879">
+			<ResultatPrediction letter="N" position="0"/>
+			<ResultatPrediction letter="́" position="1"/>
+			<ResultatPrediction letter="T" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="S" x="127" y="211" isCorrect="true" isPredicted="false" t="1714654293362"/>
+		<Prediction t="1714654293362">
+			<ResultatPrediction letter="T" position="0"/>
+			<ResultatPrediction letter="S" position="1"/>
+			<ResultatPrediction letter="C" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="S" x="127" y="211" isCorrect="true" isPredicted="false" t="1714654293891"/>
+		<Prediction t="1714654293892">
+			<ResultatPrediction letter="A" position="0"/>
+			<ResultatPrediction letter="O" position="1"/>
+			<ResultatPrediction letter="E" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="E" x="255" y="188" isCorrect="true" isPredicted="true" t="1714654294558"/>
+		<Prediction t="1714654294558">
+			<ResultatPrediction letter="N" position="0"/>
+			<ResultatPrediction letter="U" position="1"/>
+			<ResultatPrediction letter="." position="2"/>
+		</Prediction>
+		<SelectionCaractere name="N" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654294963"/>
+		<Prediction t="1714654294963">
+			<ResultatPrediction letter="T" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+		</Prediction>
+		<SelectionCaractere name="T" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654295294"/>
+		<Prediction t="1714654295295">
+			<ResultatPrediction letter="I" position="0"/>
+		</Prediction>
+		<SelectionCaractere name="I" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654295555"/>
+		<Prediction t="1714654295555">
+			<ResultatPrediction letter="E" position="0"/>
+			<ResultatPrediction letter="A" position="1"/>
+		</Prediction>
+		<SelectionCaractere name="E" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654295794"/>
+		<Prediction t="1714654295794">
+			<ResultatPrediction letter="L" position="0"/>
+		</Prediction>
+		<SelectionCaractere name="L" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654296730"/>
+		<Prediction t="1714654296730">
+			<ResultatPrediction letter="L" position="0"/>
+			<ResultatPrediction letter="S" position="1"/>
+			<ResultatPrediction letter="," position="2"/>
+		</Prediction>
+		<SelectionCaractere name=" " x="212" y="211" isCorrect="true" isPredicted="false" t="1714654297226"/>
+		<Prediction t="1714654297226">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="P" x="255" y="188" isCorrect="true" isPredicted="true" t="1714654297965"/>
+		<Prediction t="1714654297965">
+			<ResultatPrediction letter="A" position="0"/>
+			<ResultatPrediction letter="R" position="1"/>
+			<ResultatPrediction letter="O" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="O" x="255" y="141" isCorrect="true" isPredicted="false" t="1714654298362"/>
+		<Prediction t="1714654298362">
+			<ResultatPrediction letter="U" position="0"/>
+			<ResultatPrediction letter="I" position="1"/>
+			<ResultatPrediction letter="S" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="U" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654299112"/>
+		<Prediction t="1714654299112">
+			<ResultatPrediction letter="R" position="0"/>
+			<ResultatPrediction letter="V" position="1"/>
+			<ResultatPrediction letter="S" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="R" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654299395"/>
+		<Prediction t="1714654299395">
+			<ResultatPrediction letter="R" position="0"/>
+			<ResultatPrediction letter="T" position="1"/>
+			<ResultatPrediction letter="Q" position="2"/>
+		</Prediction>
+		<SelectionCaractere name=" " x="212" y="211" isCorrect="true" isPredicted="false" t="1714654300122"/>
+		<Prediction t="1714654300122">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="S" x="127" y="211" isCorrect="true" isPredicted="false" t="1714654301186"/>
+		<Prediction t="1714654301186">
+			<ResultatPrediction letter="O" position="0"/>
+			<ResultatPrediction letter="E" position="1"/>
+			<ResultatPrediction letter="U" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="'" x="85" y="282" isCorrect="true" isPredicted="false" t="1714654302990"/>
+		<Prediction t="1714654302991">
+			<ResultatPrediction letter="A" position="0"/>
+			<ResultatPrediction letter="E" position="1"/>
+			<ResultatPrediction letter="É" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="É" x="255" y="188" isCorrect="true" isPredicted="true" t="1714654303971"/>
+		<Prediction t="1714654303972">
+			<ResultatPrediction letter="T" position="0"/>
+			<ResultatPrediction letter="L" position="1"/>
+			<ResultatPrediction letter="C" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="P" x="170" y="282" isCorrect="true" isPredicted="false" t="1714654308478"/>
+		<Prediction t="1714654308478">
+			<ResultatPrediction letter="A" position="0"/>
+			<ResultatPrediction letter="U" position="1"/>
+			<ResultatPrediction letter="R" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="A" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654308970"/>
+		<Prediction t="1714654308970">
+			<ResultatPrediction letter="N" position="0"/>
+			<ResultatPrediction letter="I" position="1"/>
+		</Prediction>
+		<SelectionCaractere name="N" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654309525"/>
+		<Prediction t="1714654309526">
+			<ResultatPrediction letter="O" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="D" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="O" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654310042"/>
+		<Prediction t="1714654310043">
+			<ResultatPrediction letter="U" position="0"/>
+		</Prediction>
+		<SelectionCaractere name="U" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654310417"/>
+		<Prediction t="1714654310419">
+			<ResultatPrediction letter="I" position="0"/>
+		</Prediction>
+		<SelectionCaractere name="I" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654310774"/>
+		<Prediction t="1714654310774">
+			<ResultatPrediction letter="R" position="0"/>
+			<ResultatPrediction letter="S" position="1"/>
+			<ResultatPrediction letter="T" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="R" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654311518"/>
+		<Prediction t="1714654311519">
+			<ResultatPrediction letter="A" position="0"/>
+			<ResultatPrediction letter="O" position="1"/>
+		</Prediction>
+		<SelectionCaractere name="." x="85" y="235" isCorrect="true" isPredicted="false" t="1714654312800"/>
+		<Prediction t="1714654312801">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+	</Phrase>
+	<Phrase string="LA DISCIPLINE EST LA CLÉ DE LA LIBERTÉ." t="1714654313392">
+		<Prediction t="1714654313392">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="L" x="297" y="164" isCorrect="true" isPredicted="false" t="1714654315946"/>
+		<Prediction t="1714654315946">
+			<ResultatPrediction letter="E" position="0"/>
+			<ResultatPrediction letter="A" position="1"/>
+			<ResultatPrediction letter="'" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="A" x="212" y="164" isCorrect="true" isPredicted="true" t="1714654316592"/>
+		<Prediction t="1714654316593">
+			<ResultatPrediction letter="I" position="0"/>
+			<ResultatPrediction letter="N" position="1"/>
+			<ResultatPrediction letter="M" position="2"/>
+		</Prediction>
+		<SelectionCaractere name=" " x="212" y="211" isCorrect="true" isPredicted="false" t="1714654317002"/>
+		<Prediction t="1714654317002">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="D" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654318362"/>
+		<Prediction t="1714654318362">
+			<ResultatPrediction letter="E" position="0"/>
+			<ResultatPrediction letter="I" position="1"/>
+			<ResultatPrediction letter="'" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="I" x="170" y="235" isCorrect="true" isPredicted="false" t="1714654318948"/>
+		<Prediction t="1714654318948">
+			<ResultatPrediction letter="S" position="0"/>
+			<ResultatPrediction letter="T" position="1"/>
+			<ResultatPrediction letter="R" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="S" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654319676"/>
+		<Prediction t="1714654319677">
+			<ResultatPrediction letter="C" position="0"/>
+			<ResultatPrediction letter="T" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="C" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654320109"/>
+		<Prediction t="1714654320109">
+			<ResultatPrediction letter="O" position="0"/>
+			<ResultatPrediction letter="U" position="1"/>
+			<ResultatPrediction letter="R" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="I" x="170" y="235" isCorrect="true" isPredicted="false" t="1714654322332"/>
+		<Prediction t="1714654322332">
+			<ResultatPrediction letter="P" position="0"/>
+		</Prediction>
+		<SelectionCaractere name="P" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654322776"/>
+		<Prediction t="1714654322776">
+			<ResultatPrediction letter="L" position="0"/>
+		</Prediction>
+		<SelectionCaractere name="L" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654323184"/>
+		<Prediction t="1714654323184">
+			<ResultatPrediction letter="I" position="0"/>
+			<ResultatPrediction letter="E" position="1"/>
+		</Prediction>
+		<SelectionCaractere name="I" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654323490"/>
+		<Prediction t="1714654323491">
+			<ResultatPrediction letter="N" position="0"/>
+		</Prediction>
+		<SelectionCaractere name="N" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654323686"/>
+		<Prediction t="1714654323687">
+			<ResultatPrediction letter="E" position="0"/>
+			<ResultatPrediction letter="A" position="1"/>
+			<ResultatPrediction letter="I" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="E" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654323906"/>
+		<Prediction t="1714654323906">
+			<ResultatPrediction letter="R" position="0"/>
+			<ResultatPrediction letter="́" position="1"/>
+			<ResultatPrediction letter="S" position="2"/>
+		</Prediction>
+		<SelectionCaractere name=" " x="212" y="211" isCorrect="true" isPredicted="false" t="1714654325411"/>
+		<Prediction t="1714654325411">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="E" x="255" y="235" isCorrect="true" isPredicted="false" t="1714654326065"/>
+		<Prediction t="1714654326066">
+			<ResultatPrediction letter="N" position="0"/>
+			<ResultatPrediction letter="́" position="1"/>
+			<ResultatPrediction letter="T" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="S" x="127" y="211" isCorrect="true" isPredicted="false" t="1714654326403"/>
+		<Prediction t="1714654326403">
+			<ResultatPrediction letter="T" position="0"/>
+			<ResultatPrediction letter="S" position="1"/>
+			<ResultatPrediction letter="C" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="T" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654326693"/>
+		<Prediction t="1714654326693">
+			<ResultatPrediction letter="O" position="0"/>
+			<ResultatPrediction letter="I" position="1"/>
+			<ResultatPrediction letter="C" position="2"/>
+		</Prediction>
+		<SelectionCaractere name=" " x="212" y="211" isCorrect="true" isPredicted="false" t="1714654327028"/>
+		<Prediction t="1714654327028">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="L" x="297" y="164" isCorrect="true" isPredicted="false" t="1714654327429"/>
+		<Prediction t="1714654327430">
+			<ResultatPrediction letter="E" position="0"/>
+			<ResultatPrediction letter="A" position="1"/>
+			<ResultatPrediction letter="'" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="A" x="212" y="164" isCorrect="true" isPredicted="true" t="1714654328004"/>
+		<Prediction t="1714654328005">
+			<ResultatPrediction letter="I" position="0"/>
+			<ResultatPrediction letter="N" position="1"/>
+			<ResultatPrediction letter="M" position="2"/>
+		</Prediction>
+		<SelectionCaractere name=" " x="212" y="211" isCorrect="true" isPredicted="false" t="1714654328304"/>
+		<Prediction t="1714654328304">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="C" x="255" y="282" isCorrect="true" isPredicted="false" t="1714654330033"/>
+		<Prediction t="1714654330033">
+			<ResultatPrediction letter="O" position="0"/>
+			<ResultatPrediction letter="E" position="1"/>
+			<ResultatPrediction letter="H" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="L" x="297" y="164" isCorrect="true" isPredicted="false" t="1714654330379"/>
+		<Prediction t="1714654330379">
+			<ResultatPrediction letter="A" position="0"/>
+			<ResultatPrediction letter="O" position="1"/>
+			<ResultatPrediction letter="I" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="É" x="85" y="141" isCorrect="true" isPredicted="false" t="1714654331500"/>
+		<Prediction t="1714654331500">
+			<ResultatPrediction letter="M" position="0"/>
+			<ResultatPrediction letter="." position="1"/>
+		</Prediction>
+		<SelectionCaractere name=" " x="212" y="211" isCorrect="true" isPredicted="false" t="1714654331893"/>
+		<Prediction t="1714654331893">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="D" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654332573"/>
+		<Prediction t="1714654332574">
+			<ResultatPrediction letter="E" position="0"/>
+			<ResultatPrediction letter="I" position="1"/>
+			<ResultatPrediction letter="'" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="E" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654332939"/>
+		<Prediction t="1714654332940">
+			<ResultatPrediction letter="́" position="0"/>
+			<ResultatPrediction letter="S" position="1"/>
+			<ResultatPrediction letter="V" position="2"/>
+		</Prediction>
+		<SelectionCaractere name=" " x="212" y="211" isCorrect="true" isPredicted="false" t="1714654333261"/>
+		<Prediction t="1714654333261">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="L" x="297" y="164" isCorrect="true" isPredicted="false" t="1714654333634"/>
+		<Prediction t="1714654333634">
+			<ResultatPrediction letter="E" position="0"/>
+			<ResultatPrediction letter="A" position="1"/>
+			<ResultatPrediction letter="'" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="A" x="212" y="164" isCorrect="true" isPredicted="true" t="1714654334214"/>
+		<Prediction t="1714654334214">
+			<ResultatPrediction letter="I" position="0"/>
+			<ResultatPrediction letter="N" position="1"/>
+			<ResultatPrediction letter="M" position="2"/>
+		</Prediction>
+		<SelectionCaractere name=" " x="212" y="211" isCorrect="true" isPredicted="false" t="1714654334640"/>
+		<Prediction t="1714654334640">
+			<ResultatPrediction letter="D" position="0"/>
+			<ResultatPrediction letter="C" position="1"/>
+			<ResultatPrediction letter="P" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="L" x="297" y="164" isCorrect="true" isPredicted="false" t="1714654334988"/>
+		<Prediction t="1714654334988">
+			<ResultatPrediction letter="E" position="0"/>
+			<ResultatPrediction letter="A" position="1"/>
+			<ResultatPrediction letter="'" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="I" x="170" y="235" isCorrect="true" isPredicted="false" t="1714654335666"/>
+		<Prediction t="1714654335667">
+			<ResultatPrediction letter="B" position="0"/>
+			<ResultatPrediction letter="T" position="1"/>
+			<ResultatPrediction letter="M" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="B" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654336167"/>
+		<Prediction t="1714654336167">
+			<ResultatPrediction letter="E" position="0"/>
+			<ResultatPrediction letter="R" position="1"/>
+			<ResultatPrediction letter="É" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="E" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654336554"/>
+		<Prediction t="1714654336554">
+			<ResultatPrediction letter="́" position="0"/>
+			<ResultatPrediction letter="R" position="1"/>
+			<ResultatPrediction letter="L" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="R" x="212" y="164" isCorrect="true" isPredicted="true" t="1714654338221"/>
+		<Prediction t="1714654338222">
+			<ResultatPrediction letter="T" position="0"/>
+			<ResultatPrediction letter="," position="1"/>
+		</Prediction>
+		<SelectionCaractere name="T" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654338709"/>
+		<Prediction t="1714654338710">
+			<ResultatPrediction letter="É" position="0"/>
+			<ResultatPrediction letter="I" position="1"/>
+			<ResultatPrediction letter="A" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="É" x="170" y="188" isCorrect="true" isPredicted="true" t="1714654339127"/>
+		<Prediction t="1714654339127">
+			<ResultatPrediction letter="," position="0"/>
+			<ResultatPrediction letter="." position="1"/>
+			<ResultatPrediction letter="S" position="2"/>
+		</Prediction>
+		<SelectionCaractere name="." x="85" y="235" isCorrect="true" isPredicted="false" t="1714654340446"/>
+		<Prediction t="1714654340446">
+		</Prediction>
+	</Phrase>
+</ExpeKeyboard>

@@ -58,7 +58,7 @@ public class Touche extends Observable {
 	public boolean mousePressed(Point p) {
 		if(forme.contains(p)){
 			etat = Etat.PRESSE;
-			sendInfo("[KeyPressed]"+str+";x="+centreX+";y="+centreY);
+			///sendInfo("[KeyPressed]"+str+";x="+centreX+";y="+centreY);
             return true;
 		}
         return false;

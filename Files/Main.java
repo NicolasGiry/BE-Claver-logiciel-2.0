@@ -26,6 +26,8 @@ public class Main {
         m = scanner.nextInt();
         
         ExpeLogger.debutSimulation(wp, m, mode);
-        Clavier2Frame frame = new Clavier2Frame();
+        //Clavier2Frame frame = 
+        new Clavier2Frame();
+        scanner.close();
     }
 }

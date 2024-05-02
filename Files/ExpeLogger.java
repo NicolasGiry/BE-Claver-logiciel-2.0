@@ -24,6 +24,9 @@ public class ExpeLogger{
 		
 		try {
 			StringBuffer fileName = new StringBuffer("logs/");
+			if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+				fileName = new StringBuffer("Files/logs/");
+			}
 			fileName.append(year);
 			fileName.append("_");
 			fileName.append(month);
@@ -120,7 +123,7 @@ public class ExpeLogger{
 		}
 	}
 	
-	public static void selectionCaractere(String car, int x, int y) {
+	public static void selectionCaractere(String car, int x, int y, boolean correct, boolean isPredicted) {
 		try {
 			long time = System.currentTimeMillis();
 			logger.txtFile.write("\t\t<SelectionCaractere name=\"");
@@ -129,24 +132,10 @@ public class ExpeLogger{
 			logger.txtFile.write(String.valueOf(x));
 			logger.txtFile.write("\" y=\"");
 			logger.txtFile.write(String.valueOf(y));
-			logger.txtFile.write("\" t=\"");
-			logger.txtFile.write(String.valueOf(time));
-			logger.txtFile.write("\"/>");
-			logger.txtFile.newLine();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void selectionCaracterePredit(String car, int x, int y) {
-		try {
-			long time = System.currentTimeMillis();
-			logger.txtFile.write("\t\t<SelectionCaracterePredit name=\"");
-			logger.txtFile.write(car);
-			logger.txtFile.write("\" x=\"");
-			logger.txtFile.write(String.valueOf(x));
-			logger.txtFile.write("\" y=\"");
-			logger.txtFile.write(String.valueOf(y));
+			logger.txtFile.write("\" isCorrect=\"");
+			logger.txtFile.write(String.valueOf(correct));
+			logger.txtFile.write("\" isPredicted=\"");
+			logger.txtFile.write(String.valueOf(isPredicted));
 			logger.txtFile.write("\" t=\"");
 			logger.txtFile.write(String.valueOf(time));
 			logger.txtFile.write("\"/>");
@@ -168,10 +157,10 @@ public class ExpeLogger{
 		}
 	}
 
-	public static void resultatPrediction(String word, int position) {
+	public static void resultatPrediction(String letter, int position) {
 		try {
-			logger.txtFile.write("\t\t\t<ResultatPrediction word=\"");
-			logger.txtFile.write(word);
+			logger.txtFile.write("\t\t\t<ResultatPrediction letter=\"");
+			logger.txtFile.write(letter);
 			logger.txtFile.write("\" position=\"");
 			logger.txtFile.write(String.valueOf(position));
 			logger.txtFile.write("\"/>");
