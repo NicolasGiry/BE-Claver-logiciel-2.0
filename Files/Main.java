@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        ResultsWordPrediction wp = ResultsWordPrediction.TROIS_PRED;
+        ResultsWordPrediction wp = ResultsWordPrediction.TROIS;
         Mode mode = Mode.TRAIN;
         Scanner scanner = new Scanner(System.in);
 
