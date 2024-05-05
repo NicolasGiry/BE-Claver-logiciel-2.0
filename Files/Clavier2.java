@@ -24,6 +24,9 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+import Prediction.Predictor;
+import Prediction.Tree;
+
 public class Clavier2 extends JComponent implements Observer, MouseListener, MouseMotionListener {
     private static final int NB_KEYS = 41;
     private static final long serialVersionUID = 1L;
