@@ -122,9 +122,6 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
     private List<String> generatePhrases() {
 		List<String> phrases = new ArrayList<>();
 		String chemin = "Files/Prediction/PhraseSet_French.txt";
-        // if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-        //     chemin = "Files/" + chemin;
-        // }
 		try {
             BufferedReader phrasesBufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(chemin), "UTF-8"));
             try {

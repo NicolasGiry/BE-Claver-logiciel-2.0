@@ -35,11 +35,6 @@ public class Predictor {
 
 
     private static void createCorpusTXT() {
-        // if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-        //     cheminLivre = "Files/" + cheminLivre;
-        //     cheminDico = "Files/" + cheminDico;
-        //     cheminCorpus = "Files/" + cheminCorpus;
-        // }
         try {
             BufferedReader reader1 = new BufferedReader(new InputStreamReader(new FileInputStream(cheminLivre), "UTF-8"));
             BufferedReader reader2 = new BufferedReader(new InputStreamReader(new FileInputStream(cheminDico), "UTF-8"));
@@ -69,11 +64,6 @@ public class Predictor {
     }
 
     private List<String> createCorpus() {
-        // if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-        //     cheminLivre = "Files/" + cheminLivre;
-        //     cheminDico = "Files/" + cheminDico;
-        //     cheminCorpus = "Files/" + cheminCorpus;
-        // }
         List<String> corpus = new ArrayList<>();
         try {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(cheminCorpus), "UTF-8"));
@@ -114,11 +104,6 @@ public class Predictor {
 
     public static void main(String[] args) {
         String osName = System.getProperty("os.name").toLowerCase();
-        // if (osName.contains("windows")) {
-        //     cheminLivre = "Files/" + cheminLivre;
-        //     cheminDico = "Files/" + cheminDico;
-        //     cheminCorpus = "Files/" + cheminCorpus;
-        // }
         Predictor predictor = new Predictor();
         createCorpusTXT();
         predictor.createTree();

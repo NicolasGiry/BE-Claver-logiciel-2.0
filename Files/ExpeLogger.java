@@ -24,9 +24,6 @@ public class ExpeLogger{
 		
 		try {
 			StringBuffer fileName = new StringBuffer("Files/logs/");
-			// if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-			// 	fileName = new StringBuffer("Files/logs/");
-			// }
 			fileName.append(year);
 			fileName.append("_");
 			fileName.append(month);
