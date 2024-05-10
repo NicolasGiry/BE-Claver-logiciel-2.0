@@ -38,7 +38,7 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
 	private List<String> phrases;
     private JTextArea phraseArea;
     private JTextPane textPane;
-    private long timer = 60000, depart;
+    private long timer = 600000, depart;
     //                   10 min
     private int currentChar=0;
 
@@ -121,7 +121,7 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
 
     private List<String> generatePhrases() {
 		List<String> phrases = new ArrayList<>();
-		String chemin = "phrases_test.txt";
+		String chemin = "Prediction/PhraseSet_French.txt";
         if (System.getProperty("os.name").toLowerCase().contains("windows")) {
             chemin = "Files/" + chemin;
         }
