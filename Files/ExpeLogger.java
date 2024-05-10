@@ -23,10 +23,10 @@ public class ExpeLogger{
 		System.out.println(day+"/"+month+"/"+year+" - "+hour+":"+minute+":"+second);
 		
 		try {
-			StringBuffer fileName = new StringBuffer("logs/");
-			if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-				fileName = new StringBuffer("Files/logs/");
-			}
+			StringBuffer fileName = new StringBuffer("Files/logs/");
+			// if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+			// 	fileName = new StringBuffer("Files/logs/");
+			// }
 			fileName.append(year);
 			fileName.append("_");
 			fileName.append(month);

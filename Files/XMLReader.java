@@ -109,10 +109,10 @@ public class XMLReader {
     private void initCSV(File file) {
         try {
 			StringBuffer fileName = new StringBuffer();
-            String folderName = "logsCSV/";
-            if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-                folderName = "Files/logsCSV/";
-            }
+            String folderName = "Files/logsCSV/";
+            // if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+            //     folderName = "Files/logsCSV/";
+            // }
             fileName.append(folderName);
 			fileName.append(file.getName());
             fileName.append("_PARSER.csv");
@@ -130,10 +130,10 @@ public class XMLReader {
 
     public static void main(String[] args) {
         XMLReader reader = new XMLReader();
-        String folderName = "logs";
-        if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-            folderName = "Files/logs";
-        }
+        String folderName = "Files/logs";
+        // if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+        //     folderName = "Files/logs";
+        // }
         File folder = new File(folderName);
         if (folder.isDirectory()) {
             File[] files = folder.listFiles();
