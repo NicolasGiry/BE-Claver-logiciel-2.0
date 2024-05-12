@@ -38,7 +38,7 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
 	private List<String> phrases;
     private JTextArea phraseArea;
     private JTextPane textPane;
-    private long timer = 600000, depart;
+    private long timer = 60000, depart;
     //                   10 min
     private int currentChar=0;
 
@@ -103,7 +103,6 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
 
         for (int i=0; i<NB_KEYS; i++) {
             keys[i] = new ToucheHexa(letters.get(i), x[i], y[i]);
-            keys[i].setTextPane(textPane);
             keys[i].addObserver(this);
             if (i<nbKeysPredicted) {
                 keys[i].setIsPredictedKey(true);
@@ -192,10 +191,6 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
     }
 
     public void supp() {
-        //nbChar--; 
-        //if (nbChar<0) {
-        //    nbChar = 0;
-        //}
         Tree parent = arbre.getparent();
         if (parent != null) {
             arbre = parent;
@@ -212,7 +207,6 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
                 break;
             case "supp":
                 if (txt.length()>0) {
-					//textPane.setText(txt.substring(0, txt.length()-1));
                     StyledDocument doc = textPane.getStyledDocument();
                     int length = doc.getLength();
                     if (length > 0) {
@@ -248,8 +242,6 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
     private boolean isCorrect(String str) {
         if (!(""+phraseArea.getText().charAt(currentChar)).equals(str) && !str.equals("supp")) {
             nbErrors++;
-            // System.out.println("Vous avez fait " + nbErrors +" erreurs.");
-            // System.out.println("Voulu : " + phraseArea.getText().charAt(currentChar) + " / écrit : " + str);
             currentChar = increment(currentChar, phraseArea.getText().length()-1);
             return false;
         } else if (str.equals("supp")) {
@@ -309,7 +301,6 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
         for (ToucheHexa k : keys) {
             if (k.mousePressed(e.getPoint())) {
                 predict(k.getStr());
-                //nbChar++;
                 boolean isPredicted = k.isPredictedKey();
                 boolean isError = !isCorrect(k.getStr());
                 ExpeLogger.selectionCaractere(k.getStr(), k.centreX, k.centreY, !isError, isPredicted);
@@ -346,5 +337,4 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
     public void mouseExited(java.awt.event.MouseEvent e) {
         // TODO Auto-generated method stub
     }
-    
 }

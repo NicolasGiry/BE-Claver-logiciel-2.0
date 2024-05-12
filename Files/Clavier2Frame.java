@@ -18,7 +18,7 @@ public class Clavier2Frame extends JFrame{
 	public Clavier2Frame() {
 		super("Clavier Logiciel");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-        ImageIcon icon = new ImageIcon("icone.png");
+        ImageIcon icon = new ImageIcon("Files/icone.png");
         setIconImage(icon.getImage());
 
 		int margin = 5;

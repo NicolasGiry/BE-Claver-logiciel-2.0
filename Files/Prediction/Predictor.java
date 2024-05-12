@@ -87,7 +87,6 @@ public class Predictor {
     public void createTree() {
         Tree current;
         List<String> corpus = createCorpus();
-
         current = racine;
         for (String letter : corpus) {
             if (letter.equals(separation)) {
@@ -103,13 +102,11 @@ public class Predictor {
     }
 
     public static void main(String[] args) {
-        String osName = System.getProperty("os.name").toLowerCase();
         Predictor predictor = new Predictor();
         createCorpusTXT();
         predictor.createTree();
         Tree racine = predictor.getRacine();
         List<String> pred = racine.predictNext(true);
-
         for (String l : pred) {
             System.out.print(l+", ");
         }

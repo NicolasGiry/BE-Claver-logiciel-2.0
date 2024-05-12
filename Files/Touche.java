@@ -20,7 +20,6 @@ public class Touche extends Observable {
 	Etat etat;
 	Shape forme;
     Font f;
-    private JTextPane jTextPane;
     boolean isPredictedKey, isValiderTouche;
 	
 	public Touche(String str, int cX, int cY){
@@ -145,10 +144,6 @@ public class Touche extends Observable {
 
     public void changeLetter(String newLetter) {
         str = newLetter;
-    }
-
-	public void setTextPane(JTextPane jTextPane) {
-        this.jTextPane = jTextPane;
     }
 
     public void setIsPredictedKey(boolean b) {
