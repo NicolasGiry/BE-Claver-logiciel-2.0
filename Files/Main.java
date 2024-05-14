@@ -68,7 +68,7 @@ public class Main extends JFrame {
                     start(mode, nbPart);
                 } 
                 else if (bExp.isSelected()) { 
-                    mode = Mode.EXP; 
+                    mode = Mode.EXP1; 
                     start(mode, nbPart);
                 }
             } 

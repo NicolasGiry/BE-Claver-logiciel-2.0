@@ -70,6 +70,7 @@ public class ExpeLogger{
 	
 	public static void finSimulation(){
 		try {
+			System.out.println("FIN SIMULATION");
 			logger.txtFile.write("</ExpeKeyboard>");
 			logger.txtFile.newLine();
 			logger.txtFile.close();

@@ -1,7 +1,8 @@
 
 public enum Mode {
     TRAIN("Train"),
-    EXP("Experience");
+    EXP1("Experience clavier 1"),
+    EXP2("Experience clavier 2");
 
     private String name;
 

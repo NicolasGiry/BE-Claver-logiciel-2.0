@@ -52,7 +52,7 @@ public class Clavier2Frame extends JFrame{
         containerPanel.add(modelPanel, BorderLayout.CENTER);
         containerPanel.add(inputPanel, BorderLayout.SOUTH);
 
-		clavier = new Clavier2(textInputPane, textModelArea, mode);
+		clavier = new Clavier2(textInputPane, textModelArea, mode, this, 2);
 
         setLayout(new BorderLayout());
 
@@ -61,6 +61,14 @@ public class Clavier2Frame extends JFrame{
 		pack();
 		setLocationRelativeTo(null);
 		setVisible(true);
+	}
+
+	public void launchSecondKeyboard(Mode mode) {
+		remove(clavier);
+		clavier = new Clavier2(textInputPane, textModelArea, mode, this, 1);
+		add(clavier, BorderLayout.CENTER);
+		revalidate();
+		repaint();
 	}
 	
 	public static void main(String[] args) {
