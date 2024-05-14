@@ -38,7 +38,7 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
 	private List<String> phrases;
     private JTextArea phraseArea;
     private JTextPane textPane;
-    private long timer = 60000, depart;
+    private long timer = 600000, depart;
     //                   10 min
     private int currentChar=0;
 
@@ -82,9 +82,12 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
                         (int) (lignes[3] * keyHeight), (int) (lignes[0] * keyHeight), (int) (lignes[0] * keyHeight), (int) (lignes[0] * keyHeight),
                         (int) (lignes[12] * keyHeight), (int) (lignes[12] * keyHeight)};
 
-    public Clavier2(JTextPane jTextpane, JTextArea textModelArea) {
+    public Clavier2(JTextPane jTextpane, JTextArea textModelArea, Mode mode) {
         super();
         depart = System.currentTimeMillis();
+        if (mode == Mode.TRAIN) {
+            timer = 0;
+        }
         this.phraseArea = textModelArea;
         textPane = jTextpane;
         predicteur.createTree();

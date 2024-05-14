@@ -8,9 +8,6 @@ import java.awt.font.LineMetrics;
 import java.awt.geom.Rectangle2D;
 import java.util.Observable;
 
-import javax.swing.JTextArea;
-import javax.swing.JTextPane;
-
 public class Touche extends Observable {
     private static final int LONGUEUR = 60;
 	private static final int HAUTEUR = 40;

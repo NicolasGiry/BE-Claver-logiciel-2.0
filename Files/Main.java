@@ -78,7 +78,7 @@ public class Main extends JFrame {
     private void start(Mode mode, int nbPart) {
         ResultsWordPrediction wp = ResultsWordPrediction.TROIS;
         ExpeLogger.debutSimulation(wp, nbPart, mode);
-        new Clavier2Frame();
+        new Clavier2Frame(mode);
         this.dispose();
     }
 

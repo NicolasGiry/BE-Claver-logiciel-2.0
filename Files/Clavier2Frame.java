@@ -15,7 +15,7 @@ public class Clavier2Frame extends JFrame{
 	private JTextPane textInputPane;
 	private JLabel textModelLabel;
 	
-	public Clavier2Frame() {
+	public Clavier2Frame(Mode mode) {
 		super("Clavier Logiciel");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
         ImageIcon icon = new ImageIcon("Files/icone.png");
@@ -52,7 +52,7 @@ public class Clavier2Frame extends JFrame{
         containerPanel.add(modelPanel, BorderLayout.CENTER);
         containerPanel.add(inputPanel, BorderLayout.SOUTH);
 
-		clavier = new Clavier2(textInputPane, textModelArea);
+		clavier = new Clavier2(textInputPane, textModelArea, mode);
 
         setLayout(new BorderLayout());
 
@@ -64,6 +64,6 @@ public class Clavier2Frame extends JFrame{
 	}
 	
 	public static void main(String[] args) {
-		new Clavier2Frame();
+		new Clavier2Frame(Mode.TRAIN);
 	}
 }
