@@ -11,13 +11,13 @@ import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 
 public class Main extends JFrame {
-	private static final int LONGUEUR = 400;
+	private static final int LONGUEUR = 440;
 	private static final int HAUTEUR = 200;
 	private static final int SPINNERWIDTH = 50;
 	private static final int SPINNERHEIGHT = 40;
 
     JLabel modeLabel, partLabel;
-    JRadioButton bTrain, bExp;
+    JRadioButton bTrain, bExp1, bExp2;
     JButton bvalider;
     ButtonGroup groupExpTrain;
     JSpinner partSpinner;
@@ -30,7 +30,8 @@ public class Main extends JFrame {
         modeLabel = new JLabel("Choisir un mode : ");
         partLabel = new JLabel("Choisir un nombre de participant : ");
         bTrain = new JRadioButton("entrainement");
-        bExp = new JRadioButton("experience");
+        bExp1 = new JRadioButton("experience G1");
+        bExp2 = new JRadioButton("experience G2");
         groupExpTrain = new ButtonGroup();
         bvalider = new JButton("Valider");
         partSpinner = new JSpinner();
@@ -42,7 +43,8 @@ public class Main extends JFrame {
         
         partPanel.setPreferredSize(new Dimension(SPINNERWIDTH, SPINNERHEIGHT));
         radioPanel.add(bTrain, BorderLayout.WEST);
-        radioPanel.add(bExp, BorderLayout.CENTER);
+        radioPanel.add(bExp1, BorderLayout.CENTER);
+        radioPanel.add(bExp2, BorderLayout.EAST);
         modelPanel.add(modeLabel, BorderLayout.WEST);
         modelPanel.add(radioPanel, BorderLayout.CENTER);
         partPanel.add(partLabel, BorderLayout.WEST);
@@ -51,7 +53,8 @@ public class Main extends JFrame {
         finalPanel.add(partPanel, BorderLayout.CENTER);
         finalPanel.add(bvalider, BorderLayout.SOUTH);
         groupExpTrain.add(bTrain);
-        groupExpTrain.add(bExp);
+        groupExpTrain.add(bExp1);
+        groupExpTrain.add(bExp2);
         this.add(finalPanel);
         pack();
 		setLocationRelativeTo(null);
@@ -61,16 +64,16 @@ public class Main extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) 
             { 
-                Mode mode;
+                Mode mode = Mode.TRAIN;
                 int nbPart = (int) partSpinner.getValue();
                 if (bTrain.isSelected()) { 
                     mode = Mode.TRAIN; 
-                    start(mode, nbPart);
-                } 
-                else if (bExp.isSelected()) { 
+                } else if (bExp1.isSelected()) { 
                     mode = Mode.EXP1; 
-                    start(mode, nbPart);
+                } else if (bExp2.isSelected()) { 
+                    mode = Mode.EXP2; 
                 }
+                start(mode, nbPart);
             } 
         }); 
     }
