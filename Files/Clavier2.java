@@ -3,6 +3,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.io.BufferedReader;
@@ -38,10 +39,12 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
 	private List<String> phrases;
     private JTextArea phraseArea;
     private JTextPane textPane;
-    private long timer = 60000, depart;
+    private long timer = 600, depart;
     //                   10 min
     private int currentChar=0;
     private Mode mode;
+    private ResultsWordPrediction wp;
+    private int nbPart;
 
     private ToucheHexa[] keys;
     private Touche validerTouche;
@@ -88,14 +91,17 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
                         (int) (lignes[3] * keyHeight), (int) (lignes[0] * keyHeight), (int) (lignes[0] * keyHeight), (int) (lignes[0] * keyHeight),
                         (int) (lignes[12] * keyHeight), (int) (lignes[12] * keyHeight)};
 
-    public Clavier2(JTextPane jTextpane, JTextArea textModelArea, Mode mode, Clavier2Frame clavierFrame, int nbClavier) {
+    public Clavier2(JTextPane jTextpane, JTextArea textModelArea, Mode mode, ResultsWordPrediction wp, Clavier2Frame clavierFrame, int nbPart, int nbClavier) {
         super();
         this.mode = mode;
+        this.wp = wp;
+        this.nbPart = nbPart;
         this.clavierFrame = clavierFrame;
         this.nbClavier = nbClavier;
         depart = System.currentTimeMillis();
         if (mode == Mode.TRAIN) {
             timer = 0;
+            this.nbClavier = 0;
         }
         this.phraseArea = textModelArea;
         textPane = jTextpane;
@@ -113,15 +119,15 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
         StyleConstants.setForeground(basic, Color.black);
         StyleConstants.setForeground(error, Color.red);
 
-        if (mode.equals(Mode.EXP2)) {
+        if (wp.equals(ResultsWordPrediction.NO_PRED)) {
             letters = lettersNoPred;
         }
 
         for (int i=0; i<NB_KEYS; i++) {
-            if (!(mode.equals(Mode.EXP2) &&  lettersNoPred.get(i).equals(""))) {
+            if (!(wp.equals(ResultsWordPrediction.NO_PRED) &&  lettersNoPred.get(i).equals(""))) {
                 keys[i] = new ToucheHexa(letters.get(i), x[i], y[i]);
                 keys[i].addObserver(this);
-                if (i<nbKeysPredicted && mode.equals(Mode.EXP1)) {
+                if (i<nbKeysPredicted && wp.equals(ResultsWordPrediction.PRED)) {
                     keys[i].setIsPredictedKey(true);
                 }
             }
@@ -131,11 +137,23 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
 		phraseArea.setText(texteSuivant());
         ExpeLogger.debutDePhrase(phraseArea.getText());
 
-        if (mode.equals(Mode.EXP1)) {
+        if (wp.equals(ResultsWordPrediction.PRED)) {
             updateClavier();
         }
 		addMouseListener(this);
 		addMouseMotionListener(this);
+
+        addMouseMotionListener(new MouseMotionListener() {
+
+            @Override
+            public void mouseDragged(MouseEvent e) {}
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                ExpeLogger.mouvementSouris(e.getX(), e.getY());
+            }
+			
+		});
     }
 
     private List<String> generatePhrases() {
@@ -171,16 +189,16 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
     public void valider() {
         long timeElapsed = System.currentTimeMillis()-depart;
         ExpeLogger.finDePhrase();
+        textPane.setText("");
+        currentChar = 0;
         if (timeElapsed>=timer) {
             LaunchSecondKeyboard(); 
-            
+            return;
         }
-        currentChar = 0;
         long tempsRestant = (timer-timeElapsed);
         System.out.println("Temps restants : "+ tempsRestant / (60000) + " min " + (tempsRestant % (60000)) / 1000 + " sec " + tempsRestant % 1000 + " ms");
         phraseArea.setText(texteSuivant());
         ExpeLogger.debutDePhrase(phraseArea.getText());
-        textPane.setText("");
         reset();
     }
     
@@ -276,17 +294,24 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
 
     private void LaunchSecondKeyboard() {
         nbClavier--;
-        if (nbClavier>0) {
-            switch (mode) {
-                case EXP1:
-                    clavierFrame.launchSecondKeyboard(Mode.EXP2);
-                    return;
-                case EXP2:
-                    clavierFrame.launchSecondKeyboard(Mode.EXP1);
-                    return;
-                default:
+        if (mode.equals(Mode.EXP)) {
+            switch(wp) {
+                case PRED:
+                    wp = ResultsWordPrediction.NO_PRED;
+                    break;
+                case NO_PRED:
+                    wp = ResultsWordPrediction.PRED;
                     break;
             }
+        }
+        if (nbClavier>0) {
+            clavierFrame.launchSecondKeyboard(mode, wp, nbPart);
+            return;
+        }
+        nbPart --;
+        if (nbPart>0) {
+            clavierFrame.launchKeyboardNewPart(mode, wp, nbPart);
+            return;
         }
         ExpeLogger.finSimulation();
         System.exit(0);
@@ -358,7 +383,7 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
         if (validerTouche.mousePressed(e.getPoint())) {
             valider();
         }
-        if (mode.equals(Mode.EXP1)) {
+        if (wp.equals(ResultsWordPrediction.PRED)) {
             updateClavier();
             repaint();
         }

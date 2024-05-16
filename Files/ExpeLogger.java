@@ -100,7 +100,36 @@ public class ExpeLogger{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+	}
+
+	public static void ChangementParametres(ResultsWordPrediction wp, Mode mode, int nbPart) {
+		try {
+			long time = System.currentTimeMillis();
+			logger.txtFile.write("\t<Settings t=\"");
+			logger.txtFile.write(String.valueOf(time));
+			logger.txtFile.write("\">");
+			logger.txtFile.newLine();
+			logger.txtFile.write("\t\t<Keyboard name=\""+wp.name()+"\"/>");
+			logger.txtFile.newLine();
+			logger.txtFile.write("\t\t<Mode type=\""+mode.name()+"\"/>");
+			logger.txtFile.newLine();
+			logger.txtFile.write("\t\t<Participant id=\""+nbPart+"\"/>");
+			logger.txtFile.newLine();
+			logger.txtFile.write("\t</Settings>");
+			logger.txtFile.newLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void mouvementSouris(int x, int y) {
+		try {
+			long time = System.currentTimeMillis();
+			logger.txtFile.write("\t\t<MouvementSouris t=\""+String.valueOf(time)+"\" x=\""+x+"\" y=\""+y+"\"/>");
+			logger.txtFile.newLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static void selectionMot(String name, int x, int y) {

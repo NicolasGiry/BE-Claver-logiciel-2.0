@@ -1,6 +1,7 @@
 
 public enum ResultsWordPrediction {
-    TROIS("trois_lettres_predites");
+    PRED("clavier avec prediction"),
+    NO_PRED("clavier sans prediction");
 
     private String name;
 

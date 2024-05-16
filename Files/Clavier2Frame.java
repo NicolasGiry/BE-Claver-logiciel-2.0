@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
@@ -15,7 +16,7 @@ public class Clavier2Frame extends JFrame{
 	private JTextPane textInputPane;
 	private JLabel textModelLabel;
 	
-	public Clavier2Frame(Mode mode) {
+	public Clavier2Frame(Mode mode, ResultsWordPrediction wp, int nbPart) {
 		super("Clavier Logiciel");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
         ImageIcon icon = new ImageIcon("Files/icone.png");
@@ -52,7 +53,7 @@ public class Clavier2Frame extends JFrame{
         containerPanel.add(modelPanel, BorderLayout.CENTER);
         containerPanel.add(inputPanel, BorderLayout.SOUTH);
 
-		clavier = new Clavier2(textInputPane, textModelArea, mode, this, 2);
+		clavier = new Clavier2(textInputPane, textModelArea, mode, wp, this, nbPart, 2);
 
         setLayout(new BorderLayout());
 
@@ -61,17 +62,26 @@ public class Clavier2Frame extends JFrame{
 		pack();
 		setLocationRelativeTo(null);
 		setVisible(true);
+
+		
 	}
 
-	public void launchSecondKeyboard(Mode mode) {
+	public void launchSecondKeyboard(Mode mode, ResultsWordPrediction wp, int nbPart) {
 		remove(clavier);
-		clavier = new Clavier2(textInputPane, textModelArea, mode, this, 1);
+		ExpeLogger.ChangementParametres(wp, mode, nbPart);
+		clavier = new Clavier2(textInputPane, textModelArea, mode, wp, this, nbPart, 1);
 		add(clavier, BorderLayout.CENTER);
 		revalidate();
 		repaint();
 	}
-	
-	public static void main(String[] args) {
-		new Clavier2Frame(Mode.TRAIN);
+
+	public void launchKeyboardNewPart(Mode mode, ResultsWordPrediction wp, int nbPart) {
+		JOptionPane.showMessageDialog(this, "Félicitation, vous avez terminé !\n\nC'est au tour du participant suivant.\n\nAppuyer sur 'OK' quand vous êtes prêt à commencer.\n ", "Participant Suivant", JOptionPane.INFORMATION_MESSAGE);
+		remove(clavier);
+		ExpeLogger.ChangementParametres(wp, mode, nbPart);
+		clavier = new Clavier2(textInputPane, textModelArea, mode, wp, this, nbPart, 2);
+        add(clavier, BorderLayout.CENTER);
+        revalidate();
+        repaint();
 	}
 }

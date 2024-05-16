@@ -11,15 +11,15 @@ import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 
 public class Main extends JFrame {
-	private static final int LONGUEUR = 440;
+	private static final int LONGUEUR = 450;
 	private static final int HAUTEUR = 200;
 	private static final int SPINNERWIDTH = 50;
 	private static final int SPINNERHEIGHT = 40;
 
-    JLabel modeLabel, partLabel;
-    JRadioButton bTrain, bExp1, bExp2;
+    JLabel modeLabel, clavLabel, partLabel;
+    JRadioButton bTrain, bExp, bClavierPred, bClavierNoPred;
     JButton bvalider;
-    ButtonGroup groupExpTrain;
+    ButtonGroup groupExpTrain, groupClavier;
     JSpinner partSpinner;
 
     public Main() {
@@ -28,34 +28,50 @@ public class Main extends JFrame {
         setPreferredSize(new Dimension(LONGUEUR, HAUTEUR));
 
         modeLabel = new JLabel("Choisir un mode : ");
+        clavLabel = new JLabel("Choisir un clavier : ");
         partLabel = new JLabel("Choisir un nombre de participant : ");
         bTrain = new JRadioButton("entrainement");
-        bExp1 = new JRadioButton("experience G1");
-        bExp2 = new JRadioButton("experience G2");
+        bExp = new JRadioButton("experience");
+        bClavierPred = new JRadioButton("avec prédiction");
+        bClavierNoPred = new JRadioButton("sans prédiction");
         groupExpTrain = new ButtonGroup();
+        groupClavier = new ButtonGroup();
         bvalider = new JButton("Valider");
         partSpinner = new JSpinner();
 
-        JPanel radioPanel = new JPanel(new BorderLayout());
+        JPanel radioModePanel = new JPanel(new BorderLayout());
+        JPanel radioClavPanel = new JPanel(new BorderLayout());
         JPanel modelPanel = new JPanel(new BorderLayout());
+        JPanel clavierPanel = new JPanel(new BorderLayout());
         JPanel partPanel = new JPanel(new BorderLayout());
         JPanel finalPanel = new JPanel(new BorderLayout());
         
         partPanel.setPreferredSize(new Dimension(SPINNERWIDTH, SPINNERHEIGHT));
-        radioPanel.add(bTrain, BorderLayout.WEST);
-        radioPanel.add(bExp1, BorderLayout.CENTER);
-        radioPanel.add(bExp2, BorderLayout.EAST);
+        radioModePanel.add(bTrain, BorderLayout.WEST);
+        radioModePanel.add(bExp, BorderLayout.CENTER);
+        radioClavPanel.add(bClavierPred, BorderLayout.WEST);
+        radioClavPanel.add(bClavierNoPred, BorderLayout.CENTER);
+
         modelPanel.add(modeLabel, BorderLayout.WEST);
-        modelPanel.add(radioPanel, BorderLayout.CENTER);
+        modelPanel.add(radioModePanel, BorderLayout.CENTER);
+        clavierPanel.add(clavLabel, BorderLayout.WEST);
+        clavierPanel.add(radioClavPanel, BorderLayout.CENTER);
+
         partPanel.add(partLabel, BorderLayout.WEST);
         partPanel.add(partSpinner, BorderLayout.CENTER);
+
         finalPanel.add(modelPanel, BorderLayout.NORTH);
-        finalPanel.add(partPanel, BorderLayout.CENTER);
-        finalPanel.add(bvalider, BorderLayout.SOUTH);
+        finalPanel.add(clavierPanel, BorderLayout.CENTER);
+        finalPanel.add(partPanel, BorderLayout.SOUTH);
+        
         groupExpTrain.add(bTrain);
-        groupExpTrain.add(bExp1);
-        groupExpTrain.add(bExp2);
-        this.add(finalPanel);
+        groupExpTrain.add(bExp);
+        groupClavier.add(bClavierPred);
+        groupClavier.add(bClavierNoPred);
+
+        this.setLayout(new BorderLayout());
+        this.add(finalPanel, BorderLayout.CENTER);
+        this.add(bvalider, BorderLayout.SOUTH);
         pack();
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -65,23 +81,31 @@ public class Main extends JFrame {
             public void actionPerformed(ActionEvent e) 
             { 
                 Mode mode = Mode.TRAIN;
+                ResultsWordPrediction wp = ResultsWordPrediction.PRED;
                 int nbPart = (int) partSpinner.getValue();
                 if (bTrain.isSelected()) { 
                     mode = Mode.TRAIN; 
-                } else if (bExp1.isSelected()) { 
-                    mode = Mode.EXP1; 
-                } else if (bExp2.isSelected()) { 
-                    mode = Mode.EXP2; 
+                } else if (bExp.isSelected()) { 
+                    mode = Mode.EXP; 
+                } else {
+                    return;
                 }
-                start(mode, nbPart);
+                if (bClavierPred.isSelected()) { 
+                    wp = ResultsWordPrediction.PRED; 
+                } else if (bClavierNoPred.isSelected()) { 
+                    wp = ResultsWordPrediction.NO_PRED; 
+                } else {
+                    return;
+                }
+
+                start(mode, wp, nbPart);
             } 
         }); 
     }
 
-    private void start(Mode mode, int nbPart) {
-        ResultsWordPrediction wp = ResultsWordPrediction.TROIS;
+    private void start(Mode mode, ResultsWordPrediction wp, int nbPart) {
         ExpeLogger.debutSimulation(wp, nbPart, mode);
-        new Clavier2Frame(mode);
+        new Clavier2Frame(mode, wp, nbPart);
         this.dispose();
     }
 
