@@ -17,6 +17,7 @@ import java.util.Observer;
 import java.util.Random;
 
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
@@ -203,13 +204,50 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
     }
     
     public void updateClavier() {
-        letters = arbre.predictNext(false);
-        ExpeLogger.debutPrediction();
+        List<String> oldLetters = new ArrayList<>(), pred = new ArrayList<>(), newLetters = new ArrayList<>();
         for (int i=0; i<nbKeysPredicted && i<letters.size(); i++) {
+            oldLetters.add(letters.get(i));
+            newLetters.add("-");
+        }
+        pred = arbre.predictNext(false);
+        for (int i=0; i<oldLetters.size(); i++) {
+            String currentLetter = oldLetters.get(i);
+            for (int j=0; j<nbKeysPredicted && j<pred.size(); j++) {
+                if (currentLetter.equals(pred.get(j))) {
+                    newLetters.set(i, currentLetter);
+                }
+            }
+        }
+        for (int i=0; i<nbKeysPredicted && i<pred.size(); i++) {
+            if (!newLetters.contains(pred.get(i))) {
+                for (int j=0; j<nbKeysPredicted && j<newLetters.size(); j++) {
+                    if (newLetters.get(j).equals("-")) {
+                        newLetters.set(j, pred.get(i));
+                        break;
+                    }
+                }
+            }
+        }
+        ExpeLogger.debutPrediction();
+        for (int i=0; i<newLetters.size(); i++) {
+            if (newLetters.get(i).equals("-")) {
+                letters.set(i, oldLetters.get(i));
+            } else {
+                letters.set(i, newLetters.get(i));
+                ExpeLogger.resultatPrediction(newLetters.get(i), i);
+            }
             keys[i].changeLetter(letters.get(i));
-            ExpeLogger.resultatPrediction(letters.get(i), i);
         }
         ExpeLogger.finPrediction();
+
+        // letters = arbre.predictNext(false);
+        // ExpeLogger.debutPrediction();
+
+        // for (int i=0; i<nbKeysPredicted && i<letters.size(); i++) {
+        //     keys[i].changeLetter(letters.get(i));
+        //     ExpeLogger.resultatPrediction(letters.get(i), i);
+        // }
+        // ExpeLogger.finPrediction();
     }
 
     public void predict(String letter) {
@@ -305,6 +343,7 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
             }
         }
         if (nbClavier>0) {
+            JOptionPane.showMessageDialog(this, "Vous allez changer de clavier.\n\nAppuyer sur 'OK' quand vous êtes prêt.\n ", "Changement Clavier", JOptionPane.INFORMATION_MESSAGE);
             clavierFrame.launchSecondKeyboard(mode, wp, nbPart);
             return;
         }

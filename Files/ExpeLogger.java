@@ -125,8 +125,9 @@ public class ExpeLogger{
 	public static void mouvementSouris(int x, int y) {
 		try {
 			long time = System.currentTimeMillis();
-			logger.txtFile.write("\t\t<MouvementSouris t=\""+String.valueOf(time)+"\" x=\""+x+"\" y=\""+y+"\"/>");
-			logger.txtFile.newLine();
+			logger.txtFile.write("");
+			// logger.txtFile.write("\t\t<MouvementSouris t=\""+String.valueOf(time)+"\" x=\""+x+"\" y=\""+y+"\"/>");
+			// logger.txtFile.newLine();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
