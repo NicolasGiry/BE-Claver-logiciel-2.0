@@ -125,9 +125,8 @@ public class ExpeLogger{
 	public static void mouvementSouris(int x, int y) {
 		try {
 			long time = System.currentTimeMillis();
-			logger.txtFile.write("");
-			// logger.txtFile.write("\t\t<MouvementSouris t=\""+String.valueOf(time)+"\" x=\""+x+"\" y=\""+y+"\"/>");
-			// logger.txtFile.newLine();
+			logger.txtFile.write("\t\t<MouvementSouris t=\""+String.valueOf(time)+"\" x=\""+x+"\" y=\""+y+"\"/>");
+			logger.txtFile.newLine();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -151,7 +150,7 @@ public class ExpeLogger{
 		}
 	}
 	
-	public static void selectionCaractere(String car, int x, int y, boolean correct, boolean isPredicted) {
+	public static void selectionCaractere(String car, int x, int y, boolean correct, boolean isPredicted, int xSouris, int ySouris) {
 		try {
 			long time = System.currentTimeMillis();
 			logger.txtFile.write("\t\t<SelectionCaractere name=\"");
@@ -160,6 +159,10 @@ public class ExpeLogger{
 			logger.txtFile.write(String.valueOf(x));
 			logger.txtFile.write("\" y=\"");
 			logger.txtFile.write(String.valueOf(y));
+			logger.txtFile.write("\" xSouris=\"");
+			logger.txtFile.write(String.valueOf(xSouris));
+			logger.txtFile.write("\" ySouris=\"");
+			logger.txtFile.write(String.valueOf(ySouris));
 			logger.txtFile.write("\" isCorrect=\"");
 			logger.txtFile.write(String.valueOf(correct));
 			logger.txtFile.write("\" isPredicted=\"");

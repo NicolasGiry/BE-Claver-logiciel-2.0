@@ -410,7 +410,7 @@ public class Clavier2 extends JComponent implements Observer, MouseListener, Mou
                 predict(k.getStr());
                 boolean isPredicted = k.isPredictedKey();
                 boolean isError = !isCorrect(k.getStr());
-                ExpeLogger.selectionCaractere(k.getStr(), k.centreX, k.centreY, !isError, isPredicted);
+                ExpeLogger.selectionCaractere(k.getStr(), k.centreX, k.centreY, !isError, isPredicted, e.getX(), e.getY());
                 try {
                     updateInputText(k.getStr(), isError);
                 } catch (BadLocationException err) {
